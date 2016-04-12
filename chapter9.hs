@@ -1,0 +1,37 @@
+module Chapter9 where
+
+import Data.Char
+
+eftBool :: Bool -> Bool -> [Bool]
+eftBool = enumFromTo
+
+eftOrd :: Ordering -> Ordering -> [Ordering]
+eftOrd = enumFromTo
+
+eftInt :: Int -> Int -> [Int]
+eftInt = enumFromTo
+
+eftChar :: Char -> Char -> String
+eftChar = enumFromTo
+
+myZip :: [a] -> [b] -> [(a,b)]
+myZip = myZipWith (,)
+
+myZipWith :: (a -> b  -> c) -> [a] -> [b] -> [c]
+myZipWith _ [] _ = []
+myZipWith _ _ [] = []
+myZipWith f (x:xs) (y:ys)  = f x y : myZipWith f xs ys
+
+removeLower :: String -> String
+removeLower  = filter isUpper
+
+upcaseInitial :: String -> String
+upcaseInitial [] = []
+upcaseInitial (x:xs) = toUpper x:xs
+
+myupcase :: String -> String
+myupcase [] = []
+myupcase (x:xs) = toUpper x : (myupcase xs)
+
+upcaseFirst :: String -> Char
+upcaseFirst = toUpper . head
