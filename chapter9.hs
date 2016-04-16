@@ -31,7 +31,7 @@ upcaseInitial (x:xs) = toUpper x:xs
 
 myupcase :: String -> String
 myupcase [] = []
-myupcase (x:xs) = toUpper x : (myupcase xs)
+myupcase (x:xs) = toUpper x : myupcase xs
 
 upcaseFirst :: String -> Char
 upcaseFirst = toUpper . head
@@ -41,7 +41,7 @@ myAnd [] = True
 myAnd (x:xs) =  not x  ||  myAnd xs
 
 myOr  :: [Bool] -> Bool
-myOr [] = False 
+myOr [] = False
 myOr (x:xs) =  x  ||  ( myOr xs)
 
 
@@ -49,14 +49,41 @@ myany  :: (a -> Bool) -> [a] -> Bool
 myany _ [] = False
 myany f (x:xs) = f x || myany f xs
 
-
 myelem :: Eq a => a -> [a] -> Bool
 myelem a = myany (==a) 
 
-
 myreverse :: [a] -> [a]
-myreverse l  = go [] l
+myreverse = go [] 
   where
     go :: [a] -> [a] ->[a]
     go a [] = a
     go a (x:xs) =  go (x:a) xs
+
+squish :: [[a]] -> [a]
+squish [] = []
+squish (x:xs) = x ++ squish xs
+
+squishMap :: (a -> [b]) -> [a] -> [b]
+squishMap _ []  = []
+squishMap f (x:xs) = f x ++ squishMap f xs
+
+squishAgain :: [[a]] -> [a]
+squishAgain = squishMap id
+
+myMaximumBy :: (a -> a -> Ordering) -> [a] -> a
+myMaximumBy _ [] = undefined
+myMaximumBy f (x:xs) = go f x xs
+  where
+        go f m [] = m
+        go f m (x:xs) = case f x m of 
+          LT -> go f m xs
+          _ ->  go f x xs
+
+myMinimumBy :: (a -> a -> Ordering) -> [a] -> a
+myMinimumBy f  = myMaximumBy  (flip f)
+
+myMaximum :: (Ord a ) => [a] -> a
+myMaximum = myMaximumBy compare
+
+myMinimum :: (Ord a ) => [a] -> a
+myMinimum = myMinimumBy compare
