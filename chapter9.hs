@@ -31,7 +31,7 @@ upcaseInitial (x:xs) = toUpper x:xs
 
 myupcase :: String -> String
 myupcase [] = []
-myupcase (x:xs) = toUpper x : (myupcase xs)
+myupcase (x:xs) = toUpper x : myupcase xs
 
 upcaseFirst :: String -> Char
 upcaseFirst = toUpper . head
@@ -41,7 +41,7 @@ myAnd [] = True
 myAnd (x:xs) =  not x  ||  myAnd xs
 
 myOr  :: [Bool] -> Bool
-myOr [] = False 
+myOr [] = False
 myOr (x:xs) =  x  ||  ( myOr xs)
 
 
@@ -55,8 +55,16 @@ myelem a = myany (==a)
 
 
 myreverse :: [a] -> [a]
-myreverse l  = go [] l
+myreverse = go [] 
   where
     go :: [a] -> [a] ->[a]
     go a [] = a
     go a (x:xs) =  go (x:a) xs
+
+squish :: [[a]] -> [a]
+squish [] = []
+squish (x:xs) = x ++ squish xs
+
+squishMap :: (a -> [b]) -> [a] -> [b]
+squishMap _ []  = []
+squishMap f (x:xs) = f x ++ squishMap f xs 
