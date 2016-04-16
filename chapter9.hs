@@ -35,3 +35,28 @@ myupcase (x:xs) = toUpper x : (myupcase xs)
 
 upcaseFirst :: String -> Char
 upcaseFirst = toUpper . head
+
+myAnd  :: [Bool] -> Bool
+myAnd [] = True
+myAnd (x:xs) =  not x  ||  myAnd xs
+
+myOr  :: [Bool] -> Bool
+myOr [] = False 
+myOr (x:xs) =  x  ||  ( myOr xs)
+
+
+myany  :: (a -> Bool) -> [a] -> Bool
+myany _ [] = False
+myany f (x:xs) = f x || myany f xs
+
+
+myelem :: Eq a => a -> [a] -> Bool
+myelem a = myany (==a) 
+
+
+myreverse :: [a] -> [a]
+myreverse l  = go [] l
+  where
+    go :: [a] -> [a] ->[a]
+    go a [] = a
+    go a (x:xs) =  go (x:a) xs
