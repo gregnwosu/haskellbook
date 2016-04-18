@@ -80,7 +80,7 @@ myMaximumBy f (x:xs) = go f x xs
           _ ->  go f x xs
 
 myMinimumBy :: (a -> a -> Ordering) -> [a] -> a
-myMinimumBy f  = myMaximumBy  (flip f)
+myMinimumBy   = myMaximumBy . flip 
 
 myMaximum :: (Ord a ) => [a] -> a
 myMaximum = myMaximumBy compare
