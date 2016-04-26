@@ -33,7 +33,6 @@ getManu (Car manu _) = manu
 data Example = MakeExample Int deriving Show
 
 
-
 newtype Goats = Goats Int deriving (Eq, Show, TooMany)
 newtype Cows = Cows Int deriving (Eq, Show)
 newtype Tups = Tups (Int, String) deriving (Eq, Show, TooMany )
@@ -58,3 +57,10 @@ instance (Num a, TooMany a) => TooMany (a,a) where
    tooMany (k, r) = tooMany k || tooMany r
 
 data Person  = Person {name :: String, age :: Int} deriving (Eq, Show)
+type AuthorName = String
+data Author = Fiction AuthorName | Nonfiction AuthorName deriving (Eq, Show)
+
+type Gardener = String
+
+data Garden = Gardenia Gardener  | Daisy Gardener  | Rose Gardener  | Lilac Gardener
+              deriving Show
