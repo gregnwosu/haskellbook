@@ -72,3 +72,14 @@ vigenere plaintxt key = unwords . snd $ foldl go (shifts, []) (words   plaintxt)
          go  (shs, result) string =
            let (shiftsLeft, newString) = applyShift shs string
                in (shiftsLeft, result ++ [newString])
+
+capitalizeWord :: String -> String
+capitalizeWord [] = []
+capitalizeWord (x:xs) = toUpper x : xs
+
+capitalizeParagraph :: String -> String
+capitalizeParagraph =  unwords . snd . foldl go (True, []) . words
+  where
+    go :: (Bool, [String]) -> String -> (Bool, [String])
+    go (True,result) word= (last word == '.' , result ++ [capitalizeWord word])
+    go (False,result) word= (last word == '.' , result ++ [word])
