@@ -37,12 +37,12 @@ upcaseFirst :: String -> Char
 upcaseFirst = toUpper . head
 
 myAnd  :: [Bool] -> Bool
-myAnd [] = True
 myAnd (x:xs) =  not x  ||  myAnd xs
+myAnd [] = True
 
 myOr  :: [Bool] -> Bool
 myOr [] = False
-myOr (x:xs) =  x  ||  ( myOr xs)
+myOr (x:xs) =  x  ||  myOr xs
 
 
 myany  :: (a -> Bool) -> [a] -> Bool

@@ -6,7 +6,7 @@ data BinaryTree a  = Leaf | Node (BinaryTree a) a (BinaryTree a)
                      deriving (Eq, Show , Ord)
 
 insert' :: Ord a => a -> BinaryTree a -> BinaryTree a
-insert' b Leaf = Node Leaf b Leaf
+insert'  b Leaf = Node Leaf b Leaf
 insert'  b n@(Node left a right)
  | a == b = n
  | b > a = Node left a (insert' b right)
