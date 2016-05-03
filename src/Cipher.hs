@@ -1,5 +1,6 @@
 module Cipher where
 
+
 import Data.Char
 
 shift ::  Int -> Char -> Char
@@ -11,3 +12,10 @@ caesar n = map $ shift n
 
 uncaesar :: Int -> String -> String
 uncaesar = caesar . negate
+
+
+userCaesar ::  IO String
+userCaesar = do
+  sh <- getLine
+  string <- getLine
+  return $ caesar (read sh) string

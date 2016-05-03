@@ -73,6 +73,25 @@ vigenere plaintxt key = unwords . snd $ foldl go (shifts, []) (words   plaintxt)
            let (shiftsLeft, newString) = applyShift shs string
                in (shiftsLeft, result ++ [newString])
 
+
+vigenere2 ::  IO String
+vigenere2 = do
+   plaintxt <- getLine
+   key <- getLine
+   return $ vigenere plaintxt key
+
+vigenere3 :: IO String
+vigenere3  = do
+   plaintxt <- getLine
+   key <- getLine
+   let go (shs, result) string =
+           let (shiftsLeft, newString) = applyShift shs string
+               in (shiftsLeft, result ++ [newString])
+   let shifts=map ( (-65 +)  .  ord  . toUpper) . cycle $ key
+   return $ unwords . snd $ foldl go (shifts, []) (words   plaintxt)
+
+
+
 capitalizeWord :: String -> String
 capitalizeWord [] = []
 capitalizeWord (x:xs) = toUpper x : xs
