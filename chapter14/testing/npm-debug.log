@@ -1,0 +1,1461 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/nodejs',
+1 verbose cli   '/usr/bin/npm',
+1 verbose cli   'i',
+1 verbose cli   '-g',
+1 verbose cli   'purescript',
+1 verbose cli   'pulp' ]
+2 info using npm@1.3.10
+3 info using node@v0.10.25
+4 verbose cache add [ 'purescript', null ]
+5 verbose cache add name=undefined spec="purescript" args=["purescript",null]
+6 verbose parsed url { protocol: null,
+6 verbose parsed url   slashes: null,
+6 verbose parsed url   auth: null,
+6 verbose parsed url   host: null,
+6 verbose parsed url   port: null,
+6 verbose parsed url   hostname: null,
+6 verbose parsed url   hash: null,
+6 verbose parsed url   search: null,
+6 verbose parsed url   query: null,
+6 verbose parsed url   pathname: 'purescript',
+6 verbose parsed url   path: 'purescript',
+6 verbose parsed url   href: 'purescript' }
+7 verbose cache add [ 'pulp', null ]
+8 verbose cache add name=undefined spec="pulp" args=["pulp",null]
+9 verbose parsed url { protocol: null,
+9 verbose parsed url   slashes: null,
+9 verbose parsed url   auth: null,
+9 verbose parsed url   host: null,
+9 verbose parsed url   port: null,
+9 verbose parsed url   hostname: null,
+9 verbose parsed url   hash: null,
+9 verbose parsed url   search: null,
+9 verbose parsed url   query: null,
+9 verbose parsed url   pathname: 'pulp',
+9 verbose parsed url   path: 'pulp',
+9 verbose parsed url   href: 'pulp' }
+10 silly lockFile 52ba4926-purescript purescript
+11 verbose lock purescript /home/greg/.npm/52ba4926-purescript.lock
+12 silly lockFile 73227555-pulp pulp
+13 verbose lock pulp /home/greg/.npm/73227555-pulp.lock
+14 silly lockFile 52ba4926-purescript purescript
+15 silly lockFile 52ba4926-purescript purescript
+16 silly lockFile 73227555-pulp pulp
+17 silly lockFile 73227555-pulp pulp
+18 verbose addNamed [ 'purescript', '' ]
+19 verbose addNamed [ null, '*' ]
+20 silly lockFile d8535b81-purescript purescript@
+21 verbose lock purescript@ /home/greg/.npm/d8535b81-purescript.lock
+22 verbose addNamed [ 'pulp', '' ]
+23 verbose addNamed [ null, '*' ]
+24 silly lockFile a051d6b5-pulp pulp@
+25 verbose lock pulp@ /home/greg/.npm/a051d6b5-pulp.lock
+26 silly addNameRange { name: 'purescript', range: '*', hasData: false }
+27 silly addNameRange { name: 'pulp', range: '*', hasData: false }
+28 verbose url raw purescript
+29 verbose url resolving [ 'https://registry.npmjs.org/', './purescript' ]
+30 verbose url resolved https://registry.npmjs.org/purescript
+31 info trying registry request attempt 1 at 08:55:55
+32 verbose etag "BPEPBYFTLDGKIKT4XKYIJ95P3"
+33 http GET https://registry.npmjs.org/purescript
+34 verbose url raw pulp
+35 verbose url resolving [ 'https://registry.npmjs.org/', './pulp' ]
+36 verbose url resolved https://registry.npmjs.org/pulp
+37 info trying registry request attempt 1 at 08:55:55
+38 verbose etag "8WPOFNE80KRX6GSB148N50Y0G"
+39 http GET https://registry.npmjs.org/pulp
+40 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND
+41 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND
+42 info trying registry request attempt 2 at 08:56:25
+43 verbose etag "BPEPBYFTLDGKIKT4XKYIJ95P3"
+44 http GET https://registry.npmjs.org/purescript
+45 info trying registry request attempt 2 at 08:56:25
+46 verbose etag "8WPOFNE80KRX6GSB148N50Y0G"
+47 http GET https://registry.npmjs.org/pulp
+48 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND
+49 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND
+50 info trying registry request attempt 3 at 08:57:45
+51 verbose etag "BPEPBYFTLDGKIKT4XKYIJ95P3"
+52 http GET https://registry.npmjs.org/purescript
+53 info trying registry request attempt 3 at 08:57:45
+54 verbose etag "8WPOFNE80KRX6GSB148N50Y0G"
+55 http GET https://registry.npmjs.org/pulp
+56 silly registry.get cb [ 304, undefined ]
+57 verbose etag purescript from cache
+58 silly addNameRange number 2 { name: 'purescript', range: '*', hasData: true }
+59 silly addNameRange versions [ 'purescript',
+59 silly addNameRange   [ '0.0.0',
+59 silly addNameRange     '0.0.1',
+59 silly addNameRange     '0.1.0',
+59 silly addNameRange     '0.6.9',
+59 silly addNameRange     '0.6.10',
+59 silly addNameRange     '0.6.11',
+59 silly addNameRange     '0.7.1',
+59 silly addNameRange     '0.7.2',
+59 silly addNameRange     '0.7.3-fixed',
+59 silly addNameRange     '0.7.4-rc.1',
+59 silly addNameRange     '0.7.4-rc.2',
+59 silly addNameRange     '0.7.4',
+59 silly addNameRange     '0.7.5-rc.1',
+59 silly addNameRange     '0.7.5-rc.2',
+59 silly addNameRange     '0.7.5-rc.3',
+59 silly addNameRange     '0.7.5-rc.4',
+59 silly addNameRange     '0.7.5',
+59 silly addNameRange     '0.7.6-rc.1',
+59 silly addNameRange     '0.7.6',
+59 silly addNameRange     '0.8.0-rc.1',
+59 silly addNameRange     '0.8.0-rc.2',
+59 silly addNameRange     '0.8.0',
+59 silly addNameRange     '0.8.1-rc.1',
+59 silly addNameRange     '0.8.2-rc.1',
+59 silly addNameRange     '0.8.2',
+59 silly addNameRange     '0.8.3-rc.1',
+59 silly addNameRange     '0.8.3',
+59 silly addNameRange     '0.8.4-rc.1',
+59 silly addNameRange     '0.8.4',
+59 silly addNameRange     '0.8.5-rc.1',
+59 silly addNameRange     '0.8.5',
+59 silly addNameRange     '0.8.6-rc.1' ] ]
+60 verbose addNamed [ 'purescript', '0.8.5' ]
+61 verbose addNamed [ '0.8.5', '0.8.5' ]
+62 silly lockFile 84874596-purescript-0-8-5 purescript@0.8.5
+63 verbose lock purescript@0.8.5 /home/greg/.npm/84874596-purescript-0-8-5.lock
+64 silly lockFile 84874596-purescript-0-8-5 purescript@0.8.5
+65 silly lockFile 84874596-purescript-0-8-5 purescript@0.8.5
+66 silly lockFile d8535b81-purescript purescript@
+67 silly lockFile d8535b81-purescript purescript@
+68 silly registry.get cb [ 304, undefined ]
+69 verbose etag pulp from cache
+70 silly addNameRange number 2 { name: 'pulp', range: '*', hasData: true }
+71 silly addNameRange versions [ 'pulp',
+71 silly addNameRange   [ '0.0.0',
+71 silly addNameRange     '1.0.0',
+71 silly addNameRange     '1.1.0',
+71 silly addNameRange     '1.1.1',
+71 silly addNameRange     '1.1.2',
+71 silly addNameRange     '1.1.3',
+71 silly addNameRange     '1.1.4',
+71 silly addNameRange     '1.2.0',
+71 silly addNameRange     '1.3.0',
+71 silly addNameRange     '1.4.0',
+71 silly addNameRange     '1.5.0',
+71 silly addNameRange     '2.0.0',
+71 silly addNameRange     '2.1.0',
+71 silly addNameRange     '2.2.0',
+71 silly addNameRange     '3.0.0',
+71 silly addNameRange     '3.1.0',
+71 silly addNameRange     '3.1.1',
+71 silly addNameRange     '3.2.0',
+71 silly addNameRange     '3.2.1',
+71 silly addNameRange     '3.2.2',
+71 silly addNameRange     '4.0.0',
+71 silly addNameRange     '4.0.1',
+71 silly addNameRange     '4.0.2',
+71 silly addNameRange     '4.0.3',
+71 silly addNameRange     '4.1.0',
+71 silly addNameRange     '4.2.0',
+71 silly addNameRange     '4.3.0',
+71 silly addNameRange     '4.4.0',
+71 silly addNameRange     '4.4.1',
+71 silly addNameRange     '4.5.0',
+71 silly addNameRange     '5.0.0',
+71 silly addNameRange     '5.0.2',
+71 silly addNameRange     '6.0.0',
+71 silly addNameRange     '6.0.1',
+71 silly addNameRange     '6.1.0',
+71 silly addNameRange     '6.2.0',
+71 silly addNameRange     '6.2.1',
+71 silly addNameRange     '7.0.0',
+71 silly addNameRange     '8.0.0',
+71 silly addNameRange     '8.1.0',
+71 silly addNameRange     '8.1.1',
+71 silly addNameRange     '8.2.0-rc.1',
+71 silly addNameRange     '8.2.0-rc.2',
+71 silly addNameRange     '8.2.0-rc.3',
+71 silly addNameRange     '8.2.0' ] ]
+72 verbose addNamed [ 'pulp', '8.2.0' ]
+73 verbose addNamed [ '8.2.0', '8.2.0' ]
+74 silly lockFile 6204135b-pulp-8-2-0 pulp@8.2.0
+75 verbose lock pulp@8.2.0 /home/greg/.npm/6204135b-pulp-8-2-0.lock
+76 silly lockFile 6204135b-pulp-8-2-0 pulp@8.2.0
+77 silly lockFile 6204135b-pulp-8-2-0 pulp@8.2.0
+78 silly lockFile a051d6b5-pulp pulp@
+79 silly lockFile a051d6b5-pulp pulp@
+80 silly resolved [ { name: 'purescript',
+80 silly resolved     version: '0.8.5',
+80 silly resolved     description: 'PureScript wrapper that makes it seamlessly available as a local dependency',
+80 silly resolved     license: 'MIT',
+80 silly resolved     repository:
+80 silly resolved      { type: 'git',
+80 silly resolved        url: 'git://github.com/purescript-contrib/node-purescript-bin' },
+80 silly resolved     author:
+80 silly resolved      { name: 'Shinnosuke Watanabe',
+80 silly resolved        email: 'snnskwtnb@gmail.com',
+80 silly resolved        url: 'http://github.com/shinnn' },
+80 silly resolved     engines: { node: '>=4' },
+80 silly resolved     bin:
+80 silly resolved      { psc: 'bin/psc.js',
+80 silly resolved        'psc-bundle': 'bin/psc-bundle.js',
+80 silly resolved        'psc-docs': 'bin/psc-docs.js',
+80 silly resolved        'psc-ide-client': 'bin/psc-ide-client.js',
+80 silly resolved        'psc-ide-server': 'bin/psc-ide-server.js',
+80 silly resolved        'psc-publish': 'bin/psc-publish.js',
+80 silly resolved        psci: 'bin/psci.js' },
+80 silly resolved     scripts:
+80 silly resolved      { postinstall: 'node --harmony_destructuring lib/install.js',
+80 silly resolved        build: 'node --harmony_destructuring build.js',
+80 silly resolved        lint: 'eslint --config @shinnn/node --ignore-path .gitignore .',
+80 silly resolved        pretest: 'npm run-script lint && npm run-script build',
+80 silly resolved        test: 'node --strong_mode --harmony_destructuring --harmony_array_includes test.js',
+80 silly resolved        coverage: 'node --strong_mode --harmony_destructuring --harmony_array_includes node_modules/.bin/istanbul cover test.js' },
+80 silly resolved     files: [ 'bin', 'cli.js', 'index.js', 'lib' ],
+80 silly resolved     keywords:
+80 silly resolved      [ 'cli',
+80 silly resolved        'build',
+80 silly resolved        'install',
+80 silly resolved        'installation',
+80 silly resolved        'purs',
+80 silly resolved        'purescript',
+80 silly resolved        'haskell',
+80 silly resolved        'language',
+80 silly resolved        'compile',
+80 silly resolved        'compiler',
+80 silly resolved        'bin',
+80 silly resolved        'binary',
+80 silly resolved        'binaries',
+80 silly resolved        'wrapper',
+80 silly resolved        'psc',
+80 silly resolved        'psc-bundle',
+80 silly resolved        'psc-docs',
+80 silly resolved        'psc-ide-client',
+80 silly resolved        'psc-ide-server',
+80 silly resolved        'psc-publish',
+80 silly resolved        'psci' ],
+80 silly resolved     dependencies:
+80 silly resolved      { 'async-each-series': '^1.0.0',
+80 silly resolved        'bin-build': '^2.2.0',
+80 silly resolved        'bin-wrapper': '^3.0.2',
+80 silly resolved        logalot: '^2.1.0',
+80 silly resolved        'to-executable-name': '^1.0.0' },
+80 silly resolved     devDependencies:
+80 silly resolved      { '@shinnn/eslint-config-node': '^2.0.0',
+80 silly resolved        'concat-stream': '^1.5.0',
+80 silly resolved        'each-async': '^1.1.1',
+80 silly resolved        eslint: '^2.2.0',
+80 silly resolved        istanbul: '^0.4.2',
+80 silly resolved        mkdirp: '^0.5.1',
+80 silly resolved        rimraf: '^2.5.2',
+80 silly resolved        'tap-spec': '^4.1.1',
+80 silly resolved        tape: '^4.4.0' },
+80 silly resolved     readme: '# [PureScript](https://github.com/purescript/purescript) wrapper for [Node](https://nodejs.org/)\n\n[![NPM version](http://img.shields.io/npm/v/purescript.svg)](https://www.npmjs.com/package/purescript)\n[![Build Status](http://img.shields.io/travis/purescript-contrib/node-purescript-bin.svg)](http://travis-ci.org/purescript-contrib/node-purescript-bin)\n[![Coverage Status](https://img.shields.io/coveralls/purescript-contrib/node-purescript-bin.svg)](https://coveralls.io/github/purescript-contrib/node-purescript-bin?branch=master)\n[![Dependency Status](https://img.shields.io/david/purescript-contrib/node-purescript-bin.svg)](https://david-dm.org/purescript-contrib/node-purescript-bin)\n[![devDependency Status](https://img.shields.io/david/dev/purescript-contrib/node-purescript-bin.svg)](https://david-dm.org/purescript-contrib/node-purescript-bin#info=devDependencies)\n\n[PureScript](http://www.purescript.org/) binary wrapper that makes it seamlessly available via [npm](https://www.npmjs.com/)\n\n## Installation\n\n[Use npm](https://docs.npmjs.com/cli/install) after making sure your development environment satisfies [the requirements](https://github.com/purescript/purescript/blob/3fa95cc6e4e814d71d52e24062d6e9ecef3c16d3/INSTALL.md#the-curses-library).\n\n```\nnpm install purescript\n```\n\n### Release candidate version\n\nSpecify `next` [tag](https://docs.npmjs.com/cli/dist-tag#purpose) on installation.\n\n```\nnpm install purescript@next\n```\n\n## Usage\n\n```javascript\nconst {execFile} = require(\'child_process\');\nconst paths = require(\'purescript\');\n\n// On POSIX\npaths.psc; //=> \'/path/to/proj/node_modules/purescript/vendor/psc\'\npaths[\'psc-bundle\']; //=> \'/path/to/proj/node_modules/purescript/vendor/psc-bundle\'\npaths[\'psc-docs\']; //=> \'/path/to/proj/node_modules/purescript/vendor/psc-docs\'\npaths[\'psc-ide-client\']; //=> \'/path/to/proj/node_modules/purescript/vendor/psc-ide-client\'\npaths[\'psc-ide-server\']; //=> \'/path/to/proj/node_modules/purescript/vendor/psc-ide-server\'\npaths[\'psc-publish\']; //=> \'/path/to/proj/node_modules/purescript/vendor/psc-publish\'\npaths.psci; //=> \'/path/to/proj/node_modules/purescript/vendor/psci\'\n\nexecFile(psc, [\'input.purs\', \'--output\', \'output.purs\'], err => {\n  if (err) {\n    throw err;\n  }\n\n  console.log(\'Compiled.\');\n});\n```\n\n## API\n\n### require(\'purescript\').psc\n\nType: `String`\n\nThe path to [`psc`](https://github.com/purescript/purescript/wiki/Language-Guide:-Getting-Started#compiler-usage) binary\n\n### require(\'purescript\')[\'psc-bundle\']\n\nType: `String`\n\nThe path to [`psc-bundle`](https://github.com/purescript/purescript/blob/master/psc-bundle/README.md) binary\n\n### require(\'purescript\')[\'psc-docs\']\n\nType: `String`\n\nThe path to `psc-docs` binary\n\n### require(\'purescript\')[\'psc-ide-client\']\n\nType: `String`\n\nThe path to [`psc-ide-client`](https://github.com/purescript/purescript/tree/master/psc-ide-server#issuing-queries) binary\n\n### require(\'purescript\')[\'psc-ide-server\']\n\nType: `String`\n\nThe path to [`psc-ide-server`](https://github.com/purescript/purescript/tree/master/psc-ide-server#running-the-server) binary\n\n### require(\'purescript\')[\'psc-publish\']\n\nType: `String`\n\nThe path to `psc-publish` binary\n\n### require(\'purescript\').psci\n\nType: `String`\n\nThe path to [`psci`](https://github.com/purescript/purescript/wiki/PSCi) binary\n\n## CLI\n\nYou can use it via CLI by installing it [globally](https://docs.npmjs.com/files/folders#global-installation). \n\n```sh\nnpm install -g purescript\n\npsc --help\npsc-bundle --help\npsc-docs --help\npsc-ide-client --help\npsc-ide-server --help\npsc-publish --help\npsci --help\n```\n\n## License\n\nCopyright (c) 2015 - 2016 [Shinnosuke Watanabe](https://github.com/shinnn)\n\nLicensed under [the MIT License](./LICENSE).\n',
+80 silly resolved     readmeFilename: 'README.md',
+80 silly resolved     bugs: { url: 'https://github.com/purescript-contrib/node-purescript-bin/issues' },
+80 silly resolved     _id: 'purescript@0.8.5',
+80 silly resolved     _from: 'purescript@' },
+80 silly resolved   { name: 'pulp',
+80 silly resolved     version: '8.2.0',
+80 silly resolved     description: 'A build system and package manager for PureScript projects',
+80 silly resolved     keywords: [ 'purescript', 'make', 'build', 'cabal' ],
+80 silly resolved     author: { name: 'Bodil Stokke' },
+80 silly resolved     license: 'LGPL-3.0+',
+80 silly resolved     homepage: 'https://github.com/bodil/pulp',
+80 silly resolved     repository: { type: 'git', url: 'https://github.com/bodil/pulp.git' },
+80 silly resolved     bin: { pulp: 'index.js' },
+80 silly resolved     main: 'pulp.js',
+80 silly resolved     files:
+80 silly resolved      [ 'index.js',
+80 silly resolved        'pulp.js',
+80 silly resolved        'src',
+80 silly resolved        'bower.json',
+80 silly resolved        'test-js',
+80 silly resolved        '.jshintrc' ],
+80 silly resolved     engines: { node: '>= 4' },
+80 silly resolved     scripts:
+80 silly resolved      { lint: 'jshint src',
+80 silly resolved        compile: 'psa -c -f "src/**/*.js" -f "bower_components/purescript-*/src/**/*.js" "src/**/*.purs" "bower_components/purescript-*/src/**/*.purs" --censor-lib --censor-codes=ImplicitImport',
+80 silly resolved        bundle: 'psc-bundle "output/*/*.js" --output pulp.js --module Main --main Main',
+80 silly resolved        build: 'npm run lint && npm run compile && npm run bundle',
+80 silly resolved        test: 'npm run build && mocha test-js --compilers js:babel/register',
+80 silly resolved        prepublish: 'bower install && npm run build' },
+80 silly resolved     dependencies:
+80 silly resolved      { ansi: '^0.3.0',
+80 silly resolved        browserify: '^11.0.0',
+80 silly resolved        'browserify-incremental': '^3.0.1',
+80 silly resolved        'concat-stream': '^1.4.6',
+80 silly resolved        glob: '^4.0.2',
+80 silly resolved        minimatch: '^1.0.0',
+80 silly resolved        'purs-loader': '^0.4.0',
+80 silly resolved        read: '^1.0.7',
+80 silly resolved        'string-stream': '0.0.7',
+80 silly resolved        'supports-color': '^3.1.2',
+80 silly resolved        temp: '^0.8.1',
+80 silly resolved        through: '^2.3.8',
+80 silly resolved        'tree-kill': '^1.0.0',
+80 silly resolved        watchpack: '^1.0.1',
+80 silly resolved        webpack: '^1.12.9',
+80 silly resolved        'webpack-dev-server': '^1.14.0',
+80 silly resolved        which: '^1.2.1',
+80 silly resolved        wordwrap: '0.0.2',
+80 silly resolved        xhr2: '^0.1.3' },
+80 silly resolved     devDependencies:
+80 silly resolved      { babel: '^5.8.9',
+80 silly resolved        bower: '^1.7.7',
+80 silly resolved        chai: '^3.4.1',
+80 silly resolved        co: '^4.6.0',
+80 silly resolved        'fs-promise': '^0.3.1',
+80 silly resolved        jshint: '^2.8.0',
+80 silly resolved        mocha: '^2.2.5',
+80 silly resolved        purescript: '0.8.6-rc.1',
+80 silly resolved        'purescript-psa': '^0.3.4',
+80 silly resolved        semver: '^5.1.0',
+80 silly resolved        touch: '^1.0.0' },
+80 silly resolved     bugs: { url: 'https://github.com/bodil/pulp/issues' },
+80 silly resolved     readme: 'ERROR: No README data found!',
+80 silly resolved     _id: 'pulp@8.2.0',
+80 silly resolved     _from: 'pulp@' } ]
+81 info install purescript@0.8.5 into /usr/local/lib
+82 info install pulp@8.2.0 into /usr/local/lib
+83 info installOne purescript@0.8.5
+84 warn engine purescript@0.8.5: wanted: {"node":">=4"} (current: {"node":"v0.10.25","npm":"1.3.10"})
+85 info installOne pulp@8.2.0
+86 warn engine pulp@8.2.0: wanted: {"node":">= 4"} (current: {"node":"v0.10.25","npm":"1.3.10"})
+87 info /usr/local/lib/node_modules/purescript unbuild
+88 info /usr/local/lib/node_modules/pulp unbuild
+89 verbose tar unpack /home/greg/.npm/purescript/0.8.5/package.tgz
+90 silly lockFile d59d69b9-ocal-lib-node-modules-purescript tar:///usr/local/lib/node_modules/purescript
+91 verbose lock tar:///usr/local/lib/node_modules/purescript /home/greg/.npm/d59d69b9-ocal-lib-node-modules-purescript.lock
+92 silly lockFile 0f263203-npm-purescript-0-8-5-package-tgz tar:///home/greg/.npm/purescript/0.8.5/package.tgz
+93 verbose lock tar:///home/greg/.npm/purescript/0.8.5/package.tgz /home/greg/.npm/0f263203-npm-purescript-0-8-5-package-tgz.lock
+94 verbose tar unpack /home/greg/.npm/pulp/8.2.0/package.tgz
+95 silly lockFile 82b5624f--usr-local-lib-node-modules-pulp tar:///usr/local/lib/node_modules/pulp
+96 verbose lock tar:///usr/local/lib/node_modules/pulp /home/greg/.npm/82b5624f--usr-local-lib-node-modules-pulp.lock
+97 silly lockFile 11c6535a--greg-npm-pulp-8-2-0-package-tgz tar:///home/greg/.npm/pulp/8.2.0/package.tgz
+98 verbose lock tar:///home/greg/.npm/pulp/8.2.0/package.tgz /home/greg/.npm/11c6535a--greg-npm-pulp-8-2-0-package-tgz.lock
+99 silly gunzTarPerm modes [ '755', '644' ]
+100 silly gunzTarPerm modes [ '755', '644' ]
+101 silly gunzTarPerm extractEntry package.json
+102 silly gunzTarPerm extractEntry package.json
+103 silly gunzTarPerm extractEntry README.md
+104 silly gunzTarPerm extractEntry cli.js
+105 silly gunzTarPerm extractEntry index.js
+106 silly gunzTarPerm extractEntry pulp.js
+107 silly gunzTarPerm extractEntry index.js
+108 silly gunzTarPerm extractEntry bin/psc-bundle.js
+109 silly gunzTarPerm extractEntry bin/psc-docs.js
+110 silly gunzTarPerm extractEntry bin/psc-ide-client.js
+111 silly gunzTarPerm extractEntry bin/psc-ide-server.js
+112 silly gunzTarPerm extractEntry bin/psc-publish.js
+113 silly gunzTarPerm extractEntry bin/psc.js
+114 silly gunzTarPerm extractEntry bin/psci.js
+115 silly gunzTarPerm extractEntry lib/index.js
+116 silly gunzTarPerm extractEntry .jshintrc
+117 silly gunzTarPerm extractEntry lib/install.js
+118 silly lockFile d59d69b9-ocal-lib-node-modules-purescript tar:///usr/local/lib/node_modules/purescript
+119 silly lockFile d59d69b9-ocal-lib-node-modules-purescript tar:///usr/local/lib/node_modules/purescript
+120 silly lockFile 0f263203-npm-purescript-0-8-5-package-tgz tar:///home/greg/.npm/purescript/0.8.5/package.tgz
+121 silly lockFile 0f263203-npm-purescript-0-8-5-package-tgz tar:///home/greg/.npm/purescript/0.8.5/package.tgz
+122 info preinstall purescript@0.8.5
+123 verbose readDependencies using package.json deps
+124 verbose readDependencies using package.json deps
+125 verbose cache add [ 'bin-wrapper@^3.0.2', null ]
+126 verbose cache add name=undefined spec="bin-wrapper@^3.0.2" args=["bin-wrapper@^3.0.2",null]
+127 verbose parsed url { protocol: null,
+127 verbose parsed url   slashes: null,
+127 verbose parsed url   auth: null,
+127 verbose parsed url   host: null,
+127 verbose parsed url   port: null,
+127 verbose parsed url   hostname: null,
+127 verbose parsed url   hash: null,
+127 verbose parsed url   search: null,
+127 verbose parsed url   query: null,
+127 verbose parsed url   pathname: 'bin-wrapper@^3.0.2',
+127 verbose parsed url   path: 'bin-wrapper@^3.0.2',
+127 verbose parsed url   href: 'bin-wrapper@^3.0.2' }
+128 verbose cache add name="bin-wrapper" spec="^3.0.2" args=["bin-wrapper","^3.0.2"]
+129 verbose parsed url { protocol: null,
+129 verbose parsed url   slashes: null,
+129 verbose parsed url   auth: null,
+129 verbose parsed url   host: null,
+129 verbose parsed url   port: null,
+129 verbose parsed url   hostname: null,
+129 verbose parsed url   hash: null,
+129 verbose parsed url   search: null,
+129 verbose parsed url   query: null,
+129 verbose parsed url   pathname: '^3.0.2',
+129 verbose parsed url   path: '^3.0.2',
+129 verbose parsed url   href: '^3.0.2' }
+130 verbose addNamed [ 'bin-wrapper', '^3.0.2' ]
+131 verbose addNamed [ null, '>=3.0.2-0 <4.0.0-0' ]
+132 silly lockFile 410f0dc0-bin-wrapper-3-0-2 bin-wrapper@^3.0.2
+133 verbose lock bin-wrapper@^3.0.2 /home/greg/.npm/410f0dc0-bin-wrapper-3-0-2.lock
+134 verbose cache add [ 'async-each-series@^1.0.0', null ]
+135 verbose cache add name=undefined spec="async-each-series@^1.0.0" args=["async-each-series@^1.0.0",null]
+136 verbose parsed url { protocol: null,
+136 verbose parsed url   slashes: null,
+136 verbose parsed url   auth: null,
+136 verbose parsed url   host: null,
+136 verbose parsed url   port: null,
+136 verbose parsed url   hostname: null,
+136 verbose parsed url   hash: null,
+136 verbose parsed url   search: null,
+136 verbose parsed url   query: null,
+136 verbose parsed url   pathname: 'async-each-series@^1.0.0',
+136 verbose parsed url   path: 'async-each-series@^1.0.0',
+136 verbose parsed url   href: 'async-each-series@^1.0.0' }
+137 verbose cache add name="async-each-series" spec="^1.0.0" args=["async-each-series","^1.0.0"]
+138 verbose parsed url { protocol: null,
+138 verbose parsed url   slashes: null,
+138 verbose parsed url   auth: null,
+138 verbose parsed url   host: null,
+138 verbose parsed url   port: null,
+138 verbose parsed url   hostname: null,
+138 verbose parsed url   hash: null,
+138 verbose parsed url   search: null,
+138 verbose parsed url   query: null,
+138 verbose parsed url   pathname: '^1.0.0',
+138 verbose parsed url   path: '^1.0.0',
+138 verbose parsed url   href: '^1.0.0' }
+139 verbose addNamed [ 'async-each-series', '^1.0.0' ]
+140 verbose addNamed [ null, '>=1.0.0-0 <2.0.0-0' ]
+141 silly lockFile d948bb1c-async-each-series-1-0-0 async-each-series@^1.0.0
+142 verbose lock async-each-series@^1.0.0 /home/greg/.npm/d948bb1c-async-each-series-1-0-0.lock
+143 verbose cache add [ 'bin-build@^2.2.0', null ]
+144 verbose cache add name=undefined spec="bin-build@^2.2.0" args=["bin-build@^2.2.0",null]
+145 verbose parsed url { protocol: null,
+145 verbose parsed url   slashes: null,
+145 verbose parsed url   auth: null,
+145 verbose parsed url   host: null,
+145 verbose parsed url   port: null,
+145 verbose parsed url   hostname: null,
+145 verbose parsed url   hash: null,
+145 verbose parsed url   search: null,
+145 verbose parsed url   query: null,
+145 verbose parsed url   pathname: 'bin-build@^2.2.0',
+145 verbose parsed url   path: 'bin-build@^2.2.0',
+145 verbose parsed url   href: 'bin-build@^2.2.0' }
+146 verbose cache add name="bin-build" spec="^2.2.0" args=["bin-build","^2.2.0"]
+147 verbose parsed url { protocol: null,
+147 verbose parsed url   slashes: null,
+147 verbose parsed url   auth: null,
+147 verbose parsed url   host: null,
+147 verbose parsed url   port: null,
+147 verbose parsed url   hostname: null,
+147 verbose parsed url   hash: null,
+147 verbose parsed url   search: null,
+147 verbose parsed url   query: null,
+147 verbose parsed url   pathname: '^2.2.0',
+147 verbose parsed url   path: '^2.2.0',
+147 verbose parsed url   href: '^2.2.0' }
+148 verbose addNamed [ 'bin-build', '^2.2.0' ]
+149 verbose addNamed [ null, '>=2.2.0-0 <3.0.0-0' ]
+150 silly lockFile 1f80fc9a-bin-build-2-2-0 bin-build@^2.2.0
+151 verbose lock bin-build@^2.2.0 /home/greg/.npm/1f80fc9a-bin-build-2-2-0.lock
+152 verbose cache add [ 'logalot@^2.1.0', null ]
+153 verbose cache add name=undefined spec="logalot@^2.1.0" args=["logalot@^2.1.0",null]
+154 verbose parsed url { protocol: null,
+154 verbose parsed url   slashes: null,
+154 verbose parsed url   auth: null,
+154 verbose parsed url   host: null,
+154 verbose parsed url   port: null,
+154 verbose parsed url   hostname: null,
+154 verbose parsed url   hash: null,
+154 verbose parsed url   search: null,
+154 verbose parsed url   query: null,
+154 verbose parsed url   pathname: 'logalot@^2.1.0',
+154 verbose parsed url   path: 'logalot@^2.1.0',
+154 verbose parsed url   href: 'logalot@^2.1.0' }
+155 verbose cache add name="logalot" spec="^2.1.0" args=["logalot","^2.1.0"]
+156 verbose parsed url { protocol: null,
+156 verbose parsed url   slashes: null,
+156 verbose parsed url   auth: null,
+156 verbose parsed url   host: null,
+156 verbose parsed url   port: null,
+156 verbose parsed url   hostname: null,
+156 verbose parsed url   hash: null,
+156 verbose parsed url   search: null,
+156 verbose parsed url   query: null,
+156 verbose parsed url   pathname: '^2.1.0',
+156 verbose parsed url   path: '^2.1.0',
+156 verbose parsed url   href: '^2.1.0' }
+157 verbose addNamed [ 'logalot', '^2.1.0' ]
+158 verbose addNamed [ null, '>=2.1.0-0 <3.0.0-0' ]
+159 silly lockFile 2afc7c0f-logalot-2-1-0 logalot@^2.1.0
+160 verbose lock logalot@^2.1.0 /home/greg/.npm/2afc7c0f-logalot-2-1-0.lock
+161 verbose cache add [ 'to-executable-name@^1.0.0', null ]
+162 verbose cache add name=undefined spec="to-executable-name@^1.0.0" args=["to-executable-name@^1.0.0",null]
+163 verbose parsed url { protocol: null,
+163 verbose parsed url   slashes: null,
+163 verbose parsed url   auth: null,
+163 verbose parsed url   host: null,
+163 verbose parsed url   port: null,
+163 verbose parsed url   hostname: null,
+163 verbose parsed url   hash: null,
+163 verbose parsed url   search: null,
+163 verbose parsed url   query: null,
+163 verbose parsed url   pathname: 'to-executable-name@^1.0.0',
+163 verbose parsed url   path: 'to-executable-name@^1.0.0',
+163 verbose parsed url   href: 'to-executable-name@^1.0.0' }
+164 verbose cache add name="to-executable-name" spec="^1.0.0" args=["to-executable-name","^1.0.0"]
+165 verbose parsed url { protocol: null,
+165 verbose parsed url   slashes: null,
+165 verbose parsed url   auth: null,
+165 verbose parsed url   host: null,
+165 verbose parsed url   port: null,
+165 verbose parsed url   hostname: null,
+165 verbose parsed url   hash: null,
+165 verbose parsed url   search: null,
+165 verbose parsed url   query: null,
+165 verbose parsed url   pathname: '^1.0.0',
+165 verbose parsed url   path: '^1.0.0',
+165 verbose parsed url   href: '^1.0.0' }
+166 verbose addNamed [ 'to-executable-name', '^1.0.0' ]
+167 verbose addNamed [ null, '>=1.0.0-0 <2.0.0-0' ]
+168 silly lockFile d18ef516-to-executable-name-1-0-0 to-executable-name@^1.0.0
+169 verbose lock to-executable-name@^1.0.0 /home/greg/.npm/d18ef516-to-executable-name-1-0-0.lock
+170 silly addNameRange { name: 'bin-wrapper',
+170 silly addNameRange   range: '>=3.0.2-0 <4.0.0-0',
+170 silly addNameRange   hasData: false }
+171 silly addNameRange { name: 'async-each-series',
+171 silly addNameRange   range: '>=1.0.0-0 <2.0.0-0',
+171 silly addNameRange   hasData: false }
+172 silly addNameRange { name: 'bin-build',
+172 silly addNameRange   range: '>=2.2.0-0 <3.0.0-0',
+172 silly addNameRange   hasData: false }
+173 verbose url raw bin-wrapper
+174 verbose url resolving [ 'https://registry.npmjs.org/', './bin-wrapper' ]
+175 verbose url resolved https://registry.npmjs.org/bin-wrapper
+176 info trying registry request attempt 1 at 08:58:05
+177 http GET https://registry.npmjs.org/bin-wrapper
+178 verbose url raw async-each-series
+179 verbose url resolving [ 'https://registry.npmjs.org/', './async-each-series' ]
+180 verbose url resolved https://registry.npmjs.org/async-each-series
+181 info trying registry request attempt 1 at 08:58:05
+182 http GET https://registry.npmjs.org/async-each-series
+183 silly addNameRange { name: 'logalot', range: '>=2.1.0-0 <3.0.0-0', hasData: false }
+184 verbose url raw bin-build
+185 verbose url resolving [ 'https://registry.npmjs.org/', './bin-build' ]
+186 verbose url resolved https://registry.npmjs.org/bin-build
+187 info trying registry request attempt 1 at 08:58:05
+188 http GET https://registry.npmjs.org/bin-build
+189 silly addNameRange { name: 'to-executable-name',
+189 silly addNameRange   range: '>=1.0.0-0 <2.0.0-0',
+189 silly addNameRange   hasData: false }
+190 verbose url raw logalot
+191 verbose url resolving [ 'https://registry.npmjs.org/', './logalot' ]
+192 verbose url resolved https://registry.npmjs.org/logalot
+193 info trying registry request attempt 1 at 08:58:05
+194 http GET https://registry.npmjs.org/logalot
+195 verbose url raw to-executable-name
+196 verbose url resolving [ 'https://registry.npmjs.org/', './to-executable-name' ]
+197 verbose url resolved https://registry.npmjs.org/to-executable-name
+198 info trying registry request attempt 1 at 08:58:05
+199 http GET https://registry.npmjs.org/to-executable-name
+200 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND
+201 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND
+202 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND
+203 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND
+204 silly gunzTarPerm extractEntry bower.json
+205 silly gunzTarPerm extractEntry src/Main.js
+206 silly gunzTarPerm extractEntry src/Main.purs
+207 silly gunzTarPerm extractEntry src/Pulp/Browserify.js
+208 silly gunzTarPerm extractEntry src/Pulp/Files.js
+209 silly gunzTarPerm extractEntry src/Pulp/Init.js
+210 silly gunzTarPerm extractEntry src/Pulp/Server.js
+211 silly gunzTarPerm extractEntry src/Pulp/Watch.js
+212 silly gunzTarPerm extractEntry src/Pulp/Outputter.purs
+213 silly gunzTarPerm extractEntry src/Pulp/BumpVersion.purs
+214 silly gunzTarPerm extractEntry src/Pulp/Docs.purs
+215 silly gunzTarPerm extractEntry src/Pulp/Exec.purs
+216 silly gunzTarPerm extractEntry src/Pulp/Bower.purs
+217 silly gunzTarPerm extractEntry src/Pulp/Files.purs
+218 silly gunzTarPerm extractEntry src/Pulp/Git.purs
+219 silly gunzTarPerm extractEntry src/Pulp/Args/Help.js
+220 silly gunzTarPerm extractEntry src/Pulp/Args/Get.purs
+221 silly gunzTarPerm extractEntry src/Pulp/Args/Help.purs
+222 silly gunzTarPerm extractEntry src/Pulp/Args/Parser.purs
+223 silly gunzTarPerm extractEntry src/Pulp/Args/Types.purs
+224 silly gunzTarPerm extractEntry src/Pulp/Init.purs
+225 silly gunzTarPerm extractEntry src/Pulp/Login.purs
+226 silly gunzTarPerm extractEntry src/Pulp/Args.purs
+227 silly gunzTarPerm extractEntry src/Pulp/Project.purs
+228 silly gunzTarPerm extractEntry src/Pulp/Psci.purs
+229 silly gunzTarPerm extractEntry src/Pulp/Publish.purs
+230 silly gunzTarPerm extractEntry src/Pulp/Run.purs
+231 silly gunzTarPerm extractEntry src/Pulp/Browserify.purs
+232 silly gunzTarPerm extractEntry src/Pulp/Server.purs
+233 silly gunzTarPerm extractEntry src/Pulp/Shell.purs
+234 silly gunzTarPerm extractEntry src/Pulp/System/FFI.js
+235 silly gunzTarPerm extractEntry src/Pulp/System/Files.js
+236 silly gunzTarPerm extractEntry src/Pulp/System/Read.js
+237 silly gunzTarPerm extractEntry src/Pulp/System/Require.js
+238 silly gunzTarPerm extractEntry src/Pulp/System/Stream.js
+239 silly gunzTarPerm extractEntry src/Pulp/System/SupportsColor.js
+240 silly gunzTarPerm extractEntry src/Pulp/System/TreeKill.js
+241 silly gunzTarPerm extractEntry src/Pulp/System/Which.js
+242 silly gunzTarPerm extractEntry src/Pulp/System/FFI.purs
+243 silly gunzTarPerm extractEntry src/Pulp/System/HTTP.purs
+244 silly gunzTarPerm extractEntry src/Pulp/System/Stream.purs
+245 silly gunzTarPerm extractEntry src/Pulp/System/Which.purs
+246 silly gunzTarPerm extractEntry src/Pulp/System/SupportsColor.purs
+247 silly gunzTarPerm extractEntry src/Pulp/System/Read.purs
+248 silly gunzTarPerm extractEntry src/Pulp/System/TreeKill.purs
+249 silly gunzTarPerm extractEntry src/Pulp/System/Files.purs
+250 silly gunzTarPerm extractEntry src/Pulp/System/Require.purs
+251 silly gunzTarPerm extractEntry src/Pulp/Test.purs
+252 silly gunzTarPerm extractEntry src/Pulp/Validate.purs
+253 silly gunzTarPerm extractEntry src/Pulp/Version.purs
+254 silly gunzTarPerm extractEntry src/Pulp/VersionBump.purs
+255 silly gunzTarPerm extractEntry src/Pulp/Build.purs
+256 silly gunzTarPerm extractEntry src/Pulp/Watch.purs
+257 silly gunzTarPerm extractEntry test-js/integration.js
+258 silly gunzTarPerm extractEntry test-js/sh.js
+259 silly lockFile 82b5624f--usr-local-lib-node-modules-pulp tar:///usr/local/lib/node_modules/pulp
+260 silly lockFile 82b5624f--usr-local-lib-node-modules-pulp tar:///usr/local/lib/node_modules/pulp
+261 silly lockFile 11c6535a--greg-npm-pulp-8-2-0-package-tgz tar:///home/greg/.npm/pulp/8.2.0/package.tgz
+262 silly lockFile 11c6535a--greg-npm-pulp-8-2-0-package-tgz tar:///home/greg/.npm/pulp/8.2.0/package.tgz
+263 info preinstall pulp@8.2.0
+264 verbose readDependencies using package.json deps
+265 verbose readDependencies using package.json deps
+266 verbose cache add [ 'ansi@^0.3.0', null ]
+267 verbose cache add name=undefined spec="ansi@^0.3.0" args=["ansi@^0.3.0",null]
+268 verbose parsed url { protocol: null,
+268 verbose parsed url   slashes: null,
+268 verbose parsed url   auth: null,
+268 verbose parsed url   host: null,
+268 verbose parsed url   port: null,
+268 verbose parsed url   hostname: null,
+268 verbose parsed url   hash: null,
+268 verbose parsed url   search: null,
+268 verbose parsed url   query: null,
+268 verbose parsed url   pathname: 'ansi@^0.3.0',
+268 verbose parsed url   path: 'ansi@^0.3.0',
+268 verbose parsed url   href: 'ansi@^0.3.0' }
+269 verbose cache add name="ansi" spec="^0.3.0" args=["ansi","^0.3.0"]
+270 verbose parsed url { protocol: null,
+270 verbose parsed url   slashes: null,
+270 verbose parsed url   auth: null,
+270 verbose parsed url   host: null,
+270 verbose parsed url   port: null,
+270 verbose parsed url   hostname: null,
+270 verbose parsed url   hash: null,
+270 verbose parsed url   search: null,
+270 verbose parsed url   query: null,
+270 verbose parsed url   pathname: '^0.3.0',
+270 verbose parsed url   path: '^0.3.0',
+270 verbose parsed url   href: '^0.3.0' }
+271 verbose addNamed [ 'ansi', '^0.3.0' ]
+272 verbose addNamed [ null, '>=0.3.0-0 <0.4.0-0' ]
+273 silly lockFile 61ead74e-ansi-0-3-0 ansi@^0.3.0
+274 verbose lock ansi@^0.3.0 /home/greg/.npm/61ead74e-ansi-0-3-0.lock
+275 verbose cache add [ 'browserify@^11.0.0', null ]
+276 verbose cache add name=undefined spec="browserify@^11.0.0" args=["browserify@^11.0.0",null]
+277 verbose parsed url { protocol: null,
+277 verbose parsed url   slashes: null,
+277 verbose parsed url   auth: null,
+277 verbose parsed url   host: null,
+277 verbose parsed url   port: null,
+277 verbose parsed url   hostname: null,
+277 verbose parsed url   hash: null,
+277 verbose parsed url   search: null,
+277 verbose parsed url   query: null,
+277 verbose parsed url   pathname: 'browserify@^11.0.0',
+277 verbose parsed url   path: 'browserify@^11.0.0',
+277 verbose parsed url   href: 'browserify@^11.0.0' }
+278 verbose cache add name="browserify" spec="^11.0.0" args=["browserify","^11.0.0"]
+279 verbose parsed url { protocol: null,
+279 verbose parsed url   slashes: null,
+279 verbose parsed url   auth: null,
+279 verbose parsed url   host: null,
+279 verbose parsed url   port: null,
+279 verbose parsed url   hostname: null,
+279 verbose parsed url   hash: null,
+279 verbose parsed url   search: null,
+279 verbose parsed url   query: null,
+279 verbose parsed url   pathname: '^11.0.0',
+279 verbose parsed url   path: '^11.0.0',
+279 verbose parsed url   href: '^11.0.0' }
+280 verbose addNamed [ 'browserify', '^11.0.0' ]
+281 verbose addNamed [ null, '>=11.0.0-0 <12.0.0-0' ]
+282 silly lockFile 7ce285d3-browserify-11-0-0 browserify@^11.0.0
+283 verbose lock browserify@^11.0.0 /home/greg/.npm/7ce285d3-browserify-11-0-0.lock
+284 verbose cache add [ 'browserify-incremental@^3.0.1', null ]
+285 verbose cache add name=undefined spec="browserify-incremental@^3.0.1" args=["browserify-incremental@^3.0.1",null]
+286 verbose parsed url { protocol: null,
+286 verbose parsed url   slashes: null,
+286 verbose parsed url   auth: null,
+286 verbose parsed url   host: null,
+286 verbose parsed url   port: null,
+286 verbose parsed url   hostname: null,
+286 verbose parsed url   hash: null,
+286 verbose parsed url   search: null,
+286 verbose parsed url   query: null,
+286 verbose parsed url   pathname: 'browserify-incremental@^3.0.1',
+286 verbose parsed url   path: 'browserify-incremental@^3.0.1',
+286 verbose parsed url   href: 'browserify-incremental@^3.0.1' }
+287 verbose cache add name="browserify-incremental" spec="^3.0.1" args=["browserify-incremental","^3.0.1"]
+288 verbose parsed url { protocol: null,
+288 verbose parsed url   slashes: null,
+288 verbose parsed url   auth: null,
+288 verbose parsed url   host: null,
+288 verbose parsed url   port: null,
+288 verbose parsed url   hostname: null,
+288 verbose parsed url   hash: null,
+288 verbose parsed url   search: null,
+288 verbose parsed url   query: null,
+288 verbose parsed url   pathname: '^3.0.1',
+288 verbose parsed url   path: '^3.0.1',
+288 verbose parsed url   href: '^3.0.1' }
+289 verbose addNamed [ 'browserify-incremental', '^3.0.1' ]
+290 verbose addNamed [ null, '>=3.0.1-0 <4.0.0-0' ]
+291 silly lockFile b9ac2526-browserify-incremental-3-0-1 browserify-incremental@^3.0.1
+292 verbose lock browserify-incremental@^3.0.1 /home/greg/.npm/b9ac2526-browserify-incremental-3-0-1.lock
+293 verbose cache add [ 'concat-stream@^1.4.6', null ]
+294 verbose cache add name=undefined spec="concat-stream@^1.4.6" args=["concat-stream@^1.4.6",null]
+295 verbose parsed url { protocol: null,
+295 verbose parsed url   slashes: null,
+295 verbose parsed url   auth: null,
+295 verbose parsed url   host: null,
+295 verbose parsed url   port: null,
+295 verbose parsed url   hostname: null,
+295 verbose parsed url   hash: null,
+295 verbose parsed url   search: null,
+295 verbose parsed url   query: null,
+295 verbose parsed url   pathname: 'concat-stream@^1.4.6',
+295 verbose parsed url   path: 'concat-stream@^1.4.6',
+295 verbose parsed url   href: 'concat-stream@^1.4.6' }
+296 verbose cache add name="concat-stream" spec="^1.4.6" args=["concat-stream","^1.4.6"]
+297 verbose parsed url { protocol: null,
+297 verbose parsed url   slashes: null,
+297 verbose parsed url   auth: null,
+297 verbose parsed url   host: null,
+297 verbose parsed url   port: null,
+297 verbose parsed url   hostname: null,
+297 verbose parsed url   hash: null,
+297 verbose parsed url   search: null,
+297 verbose parsed url   query: null,
+297 verbose parsed url   pathname: '^1.4.6',
+297 verbose parsed url   path: '^1.4.6',
+297 verbose parsed url   href: '^1.4.6' }
+298 verbose addNamed [ 'concat-stream', '^1.4.6' ]
+299 verbose addNamed [ null, '>=1.4.6-0 <2.0.0-0' ]
+300 silly lockFile 93223a6d-concat-stream-1-4-6 concat-stream@^1.4.6
+301 verbose lock concat-stream@^1.4.6 /home/greg/.npm/93223a6d-concat-stream-1-4-6.lock
+302 verbose cache add [ 'glob@^4.0.2', null ]
+303 verbose cache add name=undefined spec="glob@^4.0.2" args=["glob@^4.0.2",null]
+304 verbose parsed url { protocol: null,
+304 verbose parsed url   slashes: null,
+304 verbose parsed url   auth: null,
+304 verbose parsed url   host: null,
+304 verbose parsed url   port: null,
+304 verbose parsed url   hostname: null,
+304 verbose parsed url   hash: null,
+304 verbose parsed url   search: null,
+304 verbose parsed url   query: null,
+304 verbose parsed url   pathname: 'glob@^4.0.2',
+304 verbose parsed url   path: 'glob@^4.0.2',
+304 verbose parsed url   href: 'glob@^4.0.2' }
+305 verbose cache add name="glob" spec="^4.0.2" args=["glob","^4.0.2"]
+306 verbose parsed url { protocol: null,
+306 verbose parsed url   slashes: null,
+306 verbose parsed url   auth: null,
+306 verbose parsed url   host: null,
+306 verbose parsed url   port: null,
+306 verbose parsed url   hostname: null,
+306 verbose parsed url   hash: null,
+306 verbose parsed url   search: null,
+306 verbose parsed url   query: null,
+306 verbose parsed url   pathname: '^4.0.2',
+306 verbose parsed url   path: '^4.0.2',
+306 verbose parsed url   href: '^4.0.2' }
+307 verbose addNamed [ 'glob', '^4.0.2' ]
+308 verbose addNamed [ null, '>=4.0.2-0 <5.0.0-0' ]
+309 silly lockFile 65faee59-glob-4-0-2 glob@^4.0.2
+310 verbose lock glob@^4.0.2 /home/greg/.npm/65faee59-glob-4-0-2.lock
+311 silly addNameRange { name: 'ansi', range: '>=0.3.0-0 <0.4.0-0', hasData: false }
+312 verbose cache add [ 'minimatch@^1.0.0', null ]
+313 verbose cache add name=undefined spec="minimatch@^1.0.0" args=["minimatch@^1.0.0",null]
+314 verbose parsed url { protocol: null,
+314 verbose parsed url   slashes: null,
+314 verbose parsed url   auth: null,
+314 verbose parsed url   host: null,
+314 verbose parsed url   port: null,
+314 verbose parsed url   hostname: null,
+314 verbose parsed url   hash: null,
+314 verbose parsed url   search: null,
+314 verbose parsed url   query: null,
+314 verbose parsed url   pathname: 'minimatch@^1.0.0',
+314 verbose parsed url   path: 'minimatch@^1.0.0',
+314 verbose parsed url   href: 'minimatch@^1.0.0' }
+315 verbose cache add name="minimatch" spec="^1.0.0" args=["minimatch","^1.0.0"]
+316 verbose parsed url { protocol: null,
+316 verbose parsed url   slashes: null,
+316 verbose parsed url   auth: null,
+316 verbose parsed url   host: null,
+316 verbose parsed url   port: null,
+316 verbose parsed url   hostname: null,
+316 verbose parsed url   hash: null,
+316 verbose parsed url   search: null,
+316 verbose parsed url   query: null,
+316 verbose parsed url   pathname: '^1.0.0',
+316 verbose parsed url   path: '^1.0.0',
+316 verbose parsed url   href: '^1.0.0' }
+317 verbose addNamed [ 'minimatch', '^1.0.0' ]
+318 verbose addNamed [ null, '>=1.0.0-0 <2.0.0-0' ]
+319 silly lockFile 9a219ca8-minimatch-1-0-0 minimatch@^1.0.0
+320 verbose lock minimatch@^1.0.0 /home/greg/.npm/9a219ca8-minimatch-1-0-0.lock
+321 verbose cache add [ 'purs-loader@^0.4.0', null ]
+322 verbose cache add name=undefined spec="purs-loader@^0.4.0" args=["purs-loader@^0.4.0",null]
+323 verbose parsed url { protocol: null,
+323 verbose parsed url   slashes: null,
+323 verbose parsed url   auth: null,
+323 verbose parsed url   host: null,
+323 verbose parsed url   port: null,
+323 verbose parsed url   hostname: null,
+323 verbose parsed url   hash: null,
+323 verbose parsed url   search: null,
+323 verbose parsed url   query: null,
+323 verbose parsed url   pathname: 'purs-loader@^0.4.0',
+323 verbose parsed url   path: 'purs-loader@^0.4.0',
+323 verbose parsed url   href: 'purs-loader@^0.4.0' }
+324 verbose cache add name="purs-loader" spec="^0.4.0" args=["purs-loader","^0.4.0"]
+325 verbose parsed url { protocol: null,
+325 verbose parsed url   slashes: null,
+325 verbose parsed url   auth: null,
+325 verbose parsed url   host: null,
+325 verbose parsed url   port: null,
+325 verbose parsed url   hostname: null,
+325 verbose parsed url   hash: null,
+325 verbose parsed url   search: null,
+325 verbose parsed url   query: null,
+325 verbose parsed url   pathname: '^0.4.0',
+325 verbose parsed url   path: '^0.4.0',
+325 verbose parsed url   href: '^0.4.0' }
+326 verbose addNamed [ 'purs-loader', '^0.4.0' ]
+327 verbose addNamed [ null, '>=0.4.0-0 <0.5.0-0' ]
+328 silly lockFile 4085f400-purs-loader-0-4-0 purs-loader@^0.4.0
+329 verbose lock purs-loader@^0.4.0 /home/greg/.npm/4085f400-purs-loader-0-4-0.lock
+330 silly addNameRange { name: 'browserify',
+330 silly addNameRange   range: '>=11.0.0-0 <12.0.0-0',
+330 silly addNameRange   hasData: false }
+331 verbose url raw ansi
+332 verbose url resolving [ 'https://registry.npmjs.org/', './ansi' ]
+333 verbose url resolved https://registry.npmjs.org/ansi
+334 info trying registry request attempt 1 at 08:58:26
+335 http GET https://registry.npmjs.org/ansi
+336 silly addNameRange { name: 'browserify-incremental',
+336 silly addNameRange   range: '>=3.0.1-0 <4.0.0-0',
+336 silly addNameRange   hasData: false }
+337 silly addNameRange { name: 'concat-stream',
+337 silly addNameRange   range: '>=1.4.6-0 <2.0.0-0',
+337 silly addNameRange   hasData: false }
+338 verbose cache add [ 'read@^1.0.7', null ]
+339 verbose cache add name=undefined spec="read@^1.0.7" args=["read@^1.0.7",null]
+340 verbose parsed url { protocol: null,
+340 verbose parsed url   slashes: null,
+340 verbose parsed url   auth: null,
+340 verbose parsed url   host: null,
+340 verbose parsed url   port: null,
+340 verbose parsed url   hostname: null,
+340 verbose parsed url   hash: null,
+340 verbose parsed url   search: null,
+340 verbose parsed url   query: null,
+340 verbose parsed url   pathname: 'read@^1.0.7',
+340 verbose parsed url   path: 'read@^1.0.7',
+340 verbose parsed url   href: 'read@^1.0.7' }
+341 verbose cache add name="read" spec="^1.0.7" args=["read","^1.0.7"]
+342 verbose parsed url { protocol: null,
+342 verbose parsed url   slashes: null,
+342 verbose parsed url   auth: null,
+342 verbose parsed url   host: null,
+342 verbose parsed url   port: null,
+342 verbose parsed url   hostname: null,
+342 verbose parsed url   hash: null,
+342 verbose parsed url   search: null,
+342 verbose parsed url   query: null,
+342 verbose parsed url   pathname: '^1.0.7',
+342 verbose parsed url   path: '^1.0.7',
+342 verbose parsed url   href: '^1.0.7' }
+343 verbose addNamed [ 'read', '^1.0.7' ]
+344 verbose addNamed [ null, '>=1.0.7-0 <2.0.0-0' ]
+345 silly lockFile 549ba117-read-1-0-7 read@^1.0.7
+346 verbose lock read@^1.0.7 /home/greg/.npm/549ba117-read-1-0-7.lock
+347 verbose cache add [ 'string-stream@0.0.7', null ]
+348 verbose cache add name=undefined spec="string-stream@0.0.7" args=["string-stream@0.0.7",null]
+349 verbose parsed url { protocol: null,
+349 verbose parsed url   slashes: null,
+349 verbose parsed url   auth: null,
+349 verbose parsed url   host: null,
+349 verbose parsed url   port: null,
+349 verbose parsed url   hostname: null,
+349 verbose parsed url   hash: null,
+349 verbose parsed url   search: null,
+349 verbose parsed url   query: null,
+349 verbose parsed url   pathname: 'string-stream@0.0.7',
+349 verbose parsed url   path: 'string-stream@0.0.7',
+349 verbose parsed url   href: 'string-stream@0.0.7' }
+350 verbose cache add name="string-stream" spec="0.0.7" args=["string-stream","0.0.7"]
+351 verbose parsed url { protocol: null,
+351 verbose parsed url   slashes: null,
+351 verbose parsed url   auth: null,
+351 verbose parsed url   host: null,
+351 verbose parsed url   port: null,
+351 verbose parsed url   hostname: null,
+351 verbose parsed url   hash: null,
+351 verbose parsed url   search: null,
+351 verbose parsed url   query: null,
+351 verbose parsed url   pathname: '0.0.7',
+351 verbose parsed url   path: '0.0.7',
+351 verbose parsed url   href: '0.0.7' }
+352 verbose addNamed [ 'string-stream', '0.0.7' ]
+353 verbose addNamed [ '0.0.7', '0.0.7' ]
+354 silly lockFile f37b4ffe-string-stream-0-0-7 string-stream@0.0.7
+355 verbose lock string-stream@0.0.7 /home/greg/.npm/f37b4ffe-string-stream-0-0-7.lock
+356 verbose cache add [ 'supports-color@^3.1.2', null ]
+357 verbose cache add name=undefined spec="supports-color@^3.1.2" args=["supports-color@^3.1.2",null]
+358 verbose parsed url { protocol: null,
+358 verbose parsed url   slashes: null,
+358 verbose parsed url   auth: null,
+358 verbose parsed url   host: null,
+358 verbose parsed url   port: null,
+358 verbose parsed url   hostname: null,
+358 verbose parsed url   hash: null,
+358 verbose parsed url   search: null,
+358 verbose parsed url   query: null,
+358 verbose parsed url   pathname: 'supports-color@^3.1.2',
+358 verbose parsed url   path: 'supports-color@^3.1.2',
+358 verbose parsed url   href: 'supports-color@^3.1.2' }
+359 verbose cache add name="supports-color" spec="^3.1.2" args=["supports-color","^3.1.2"]
+360 verbose parsed url { protocol: null,
+360 verbose parsed url   slashes: null,
+360 verbose parsed url   auth: null,
+360 verbose parsed url   host: null,
+360 verbose parsed url   port: null,
+360 verbose parsed url   hostname: null,
+360 verbose parsed url   hash: null,
+360 verbose parsed url   search: null,
+360 verbose parsed url   query: null,
+360 verbose parsed url   pathname: '^3.1.2',
+360 verbose parsed url   path: '^3.1.2',
+360 verbose parsed url   href: '^3.1.2' }
+361 verbose addNamed [ 'supports-color', '^3.1.2' ]
+362 verbose addNamed [ null, '>=3.1.2-0 <4.0.0-0' ]
+363 silly lockFile 38baa675-supports-color-3-1-2 supports-color@^3.1.2
+364 verbose lock supports-color@^3.1.2 /home/greg/.npm/38baa675-supports-color-3-1-2.lock
+365 silly addNameRange { name: 'glob', range: '>=4.0.2-0 <5.0.0-0', hasData: false }
+366 verbose url raw browserify
+367 verbose url resolving [ 'https://registry.npmjs.org/', './browserify' ]
+368 verbose url resolved https://registry.npmjs.org/browserify
+369 info trying registry request attempt 1 at 08:58:26
+370 http GET https://registry.npmjs.org/browserify
+371 verbose url raw browserify-incremental
+372 verbose url resolving [ 'https://registry.npmjs.org/', './browserify-incremental' ]
+373 verbose url resolved https://registry.npmjs.org/browserify-incremental
+374 info trying registry request attempt 1 at 08:58:26
+375 http GET https://registry.npmjs.org/browserify-incremental
+376 verbose url raw concat-stream
+377 verbose url resolving [ 'https://registry.npmjs.org/', './concat-stream' ]
+378 verbose url resolved https://registry.npmjs.org/concat-stream
+379 info trying registry request attempt 1 at 08:58:26
+380 http GET https://registry.npmjs.org/concat-stream
+381 silly addNameRange { name: 'minimatch',
+381 silly addNameRange   range: '>=1.0.0-0 <2.0.0-0',
+381 silly addNameRange   hasData: false }
+382 verbose cache add [ 'temp@^0.8.1', null ]
+383 verbose cache add name=undefined spec="temp@^0.8.1" args=["temp@^0.8.1",null]
+384 verbose parsed url { protocol: null,
+384 verbose parsed url   slashes: null,
+384 verbose parsed url   auth: null,
+384 verbose parsed url   host: null,
+384 verbose parsed url   port: null,
+384 verbose parsed url   hostname: null,
+384 verbose parsed url   hash: null,
+384 verbose parsed url   search: null,
+384 verbose parsed url   query: null,
+384 verbose parsed url   pathname: 'temp@^0.8.1',
+384 verbose parsed url   path: 'temp@^0.8.1',
+384 verbose parsed url   href: 'temp@^0.8.1' }
+385 verbose cache add name="temp" spec="^0.8.1" args=["temp","^0.8.1"]
+386 verbose parsed url { protocol: null,
+386 verbose parsed url   slashes: null,
+386 verbose parsed url   auth: null,
+386 verbose parsed url   host: null,
+386 verbose parsed url   port: null,
+386 verbose parsed url   hostname: null,
+386 verbose parsed url   hash: null,
+386 verbose parsed url   search: null,
+386 verbose parsed url   query: null,
+386 verbose parsed url   pathname: '^0.8.1',
+386 verbose parsed url   path: '^0.8.1',
+386 verbose parsed url   href: '^0.8.1' }
+387 verbose addNamed [ 'temp', '^0.8.1' ]
+388 verbose addNamed [ null, '>=0.8.1-0 <0.9.0-0' ]
+389 silly lockFile a4d601a1-temp-0-8-1 temp@^0.8.1
+390 verbose lock temp@^0.8.1 /home/greg/.npm/a4d601a1-temp-0-8-1.lock
+391 verbose cache add [ 'through@^2.3.8', null ]
+392 verbose cache add name=undefined spec="through@^2.3.8" args=["through@^2.3.8",null]
+393 verbose parsed url { protocol: null,
+393 verbose parsed url   slashes: null,
+393 verbose parsed url   auth: null,
+393 verbose parsed url   host: null,
+393 verbose parsed url   port: null,
+393 verbose parsed url   hostname: null,
+393 verbose parsed url   hash: null,
+393 verbose parsed url   search: null,
+393 verbose parsed url   query: null,
+393 verbose parsed url   pathname: 'through@^2.3.8',
+393 verbose parsed url   path: 'through@^2.3.8',
+393 verbose parsed url   href: 'through@^2.3.8' }
+394 verbose cache add name="through" spec="^2.3.8" args=["through","^2.3.8"]
+395 verbose parsed url { protocol: null,
+395 verbose parsed url   slashes: null,
+395 verbose parsed url   auth: null,
+395 verbose parsed url   host: null,
+395 verbose parsed url   port: null,
+395 verbose parsed url   hostname: null,
+395 verbose parsed url   hash: null,
+395 verbose parsed url   search: null,
+395 verbose parsed url   query: null,
+395 verbose parsed url   pathname: '^2.3.8',
+395 verbose parsed url   path: '^2.3.8',
+395 verbose parsed url   href: '^2.3.8' }
+396 verbose addNamed [ 'through', '^2.3.8' ]
+397 verbose addNamed [ null, '>=2.3.8-0 <3.0.0-0' ]
+398 silly lockFile 9f148279-through-2-3-8 through@^2.3.8
+399 verbose lock through@^2.3.8 /home/greg/.npm/9f148279-through-2-3-8.lock
+400 verbose cache add [ 'tree-kill@^1.0.0', null ]
+401 verbose cache add name=undefined spec="tree-kill@^1.0.0" args=["tree-kill@^1.0.0",null]
+402 verbose parsed url { protocol: null,
+402 verbose parsed url   slashes: null,
+402 verbose parsed url   auth: null,
+402 verbose parsed url   host: null,
+402 verbose parsed url   port: null,
+402 verbose parsed url   hostname: null,
+402 verbose parsed url   hash: null,
+402 verbose parsed url   search: null,
+402 verbose parsed url   query: null,
+402 verbose parsed url   pathname: 'tree-kill@^1.0.0',
+402 verbose parsed url   path: 'tree-kill@^1.0.0',
+402 verbose parsed url   href: 'tree-kill@^1.0.0' }
+403 verbose cache add name="tree-kill" spec="^1.0.0" args=["tree-kill","^1.0.0"]
+404 verbose parsed url { protocol: null,
+404 verbose parsed url   slashes: null,
+404 verbose parsed url   auth: null,
+404 verbose parsed url   host: null,
+404 verbose parsed url   port: null,
+404 verbose parsed url   hostname: null,
+404 verbose parsed url   hash: null,
+404 verbose parsed url   search: null,
+404 verbose parsed url   query: null,
+404 verbose parsed url   pathname: '^1.0.0',
+404 verbose parsed url   path: '^1.0.0',
+404 verbose parsed url   href: '^1.0.0' }
+405 verbose addNamed [ 'tree-kill', '^1.0.0' ]
+406 verbose addNamed [ null, '>=1.0.0-0 <2.0.0-0' ]
+407 silly lockFile d89a3f43-tree-kill-1-0-0 tree-kill@^1.0.0
+408 verbose lock tree-kill@^1.0.0 /home/greg/.npm/d89a3f43-tree-kill-1-0-0.lock
+409 verbose cache add [ 'watchpack@^1.0.1', null ]
+410 verbose cache add name=undefined spec="watchpack@^1.0.1" args=["watchpack@^1.0.1",null]
+411 verbose parsed url { protocol: null,
+411 verbose parsed url   slashes: null,
+411 verbose parsed url   auth: null,
+411 verbose parsed url   host: null,
+411 verbose parsed url   port: null,
+411 verbose parsed url   hostname: null,
+411 verbose parsed url   hash: null,
+411 verbose parsed url   search: null,
+411 verbose parsed url   query: null,
+411 verbose parsed url   pathname: 'watchpack@^1.0.1',
+411 verbose parsed url   path: 'watchpack@^1.0.1',
+411 verbose parsed url   href: 'watchpack@^1.0.1' }
+412 verbose cache add name="watchpack" spec="^1.0.1" args=["watchpack","^1.0.1"]
+413 verbose parsed url { protocol: null,
+413 verbose parsed url   slashes: null,
+413 verbose parsed url   auth: null,
+413 verbose parsed url   host: null,
+413 verbose parsed url   port: null,
+413 verbose parsed url   hostname: null,
+413 verbose parsed url   hash: null,
+413 verbose parsed url   search: null,
+413 verbose parsed url   query: null,
+413 verbose parsed url   pathname: '^1.0.1',
+413 verbose parsed url   path: '^1.0.1',
+413 verbose parsed url   href: '^1.0.1' }
+414 verbose addNamed [ 'watchpack', '^1.0.1' ]
+415 verbose addNamed [ null, '>=1.0.1-0 <2.0.0-0' ]
+416 silly lockFile 7fa7d7b9-watchpack-1-0-1 watchpack@^1.0.1
+417 verbose lock watchpack@^1.0.1 /home/greg/.npm/7fa7d7b9-watchpack-1-0-1.lock
+418 verbose cache add [ 'webpack@^1.12.9', null ]
+419 verbose cache add name=undefined spec="webpack@^1.12.9" args=["webpack@^1.12.9",null]
+420 verbose parsed url { protocol: null,
+420 verbose parsed url   slashes: null,
+420 verbose parsed url   auth: null,
+420 verbose parsed url   host: null,
+420 verbose parsed url   port: null,
+420 verbose parsed url   hostname: null,
+420 verbose parsed url   hash: null,
+420 verbose parsed url   search: null,
+420 verbose parsed url   query: null,
+420 verbose parsed url   pathname: 'webpack@^1.12.9',
+420 verbose parsed url   path: 'webpack@^1.12.9',
+420 verbose parsed url   href: 'webpack@^1.12.9' }
+421 verbose cache add name="webpack" spec="^1.12.9" args=["webpack","^1.12.9"]
+422 verbose parsed url { protocol: null,
+422 verbose parsed url   slashes: null,
+422 verbose parsed url   auth: null,
+422 verbose parsed url   host: null,
+422 verbose parsed url   port: null,
+422 verbose parsed url   hostname: null,
+422 verbose parsed url   hash: null,
+422 verbose parsed url   search: null,
+422 verbose parsed url   query: null,
+422 verbose parsed url   pathname: '^1.12.9',
+422 verbose parsed url   path: '^1.12.9',
+422 verbose parsed url   href: '^1.12.9' }
+423 verbose addNamed [ 'webpack', '^1.12.9' ]
+424 verbose addNamed [ null, '>=1.12.9-0 <2.0.0-0' ]
+425 silly lockFile 8a4e976b-webpack-1-12-9 webpack@^1.12.9
+426 verbose lock webpack@^1.12.9 /home/greg/.npm/8a4e976b-webpack-1-12-9.lock
+427 verbose cache add [ 'webpack-dev-server@^1.14.0', null ]
+428 verbose cache add name=undefined spec="webpack-dev-server@^1.14.0" args=["webpack-dev-server@^1.14.0",null]
+429 verbose parsed url { protocol: null,
+429 verbose parsed url   slashes: null,
+429 verbose parsed url   auth: null,
+429 verbose parsed url   host: null,
+429 verbose parsed url   port: null,
+429 verbose parsed url   hostname: null,
+429 verbose parsed url   hash: null,
+429 verbose parsed url   search: null,
+429 verbose parsed url   query: null,
+429 verbose parsed url   pathname: 'webpack-dev-server@^1.14.0',
+429 verbose parsed url   path: 'webpack-dev-server@^1.14.0',
+429 verbose parsed url   href: 'webpack-dev-server@^1.14.0' }
+430 verbose cache add name="webpack-dev-server" spec="^1.14.0" args=["webpack-dev-server","^1.14.0"]
+431 verbose parsed url { protocol: null,
+431 verbose parsed url   slashes: null,
+431 verbose parsed url   auth: null,
+431 verbose parsed url   host: null,
+431 verbose parsed url   port: null,
+431 verbose parsed url   hostname: null,
+431 verbose parsed url   hash: null,
+431 verbose parsed url   search: null,
+431 verbose parsed url   query: null,
+431 verbose parsed url   pathname: '^1.14.0',
+431 verbose parsed url   path: '^1.14.0',
+431 verbose parsed url   href: '^1.14.0' }
+432 verbose addNamed [ 'webpack-dev-server', '^1.14.0' ]
+433 verbose addNamed [ null, '>=1.14.0-0 <2.0.0-0' ]
+434 silly lockFile e48d253e-webpack-dev-server-1-14-0 webpack-dev-server@^1.14.0
+435 verbose lock webpack-dev-server@^1.14.0 /home/greg/.npm/e48d253e-webpack-dev-server-1-14-0.lock
+436 verbose cache add [ 'which@^1.2.1', null ]
+437 verbose cache add name=undefined spec="which@^1.2.1" args=["which@^1.2.1",null]
+438 verbose parsed url { protocol: null,
+438 verbose parsed url   slashes: null,
+438 verbose parsed url   auth: null,
+438 verbose parsed url   host: null,
+438 verbose parsed url   port: null,
+438 verbose parsed url   hostname: null,
+438 verbose parsed url   hash: null,
+438 verbose parsed url   search: null,
+438 verbose parsed url   query: null,
+438 verbose parsed url   pathname: 'which@^1.2.1',
+438 verbose parsed url   path: 'which@^1.2.1',
+438 verbose parsed url   href: 'which@^1.2.1' }
+439 verbose cache add name="which" spec="^1.2.1" args=["which","^1.2.1"]
+440 verbose parsed url { protocol: null,
+440 verbose parsed url   slashes: null,
+440 verbose parsed url   auth: null,
+440 verbose parsed url   host: null,
+440 verbose parsed url   port: null,
+440 verbose parsed url   hostname: null,
+440 verbose parsed url   hash: null,
+440 verbose parsed url   search: null,
+440 verbose parsed url   query: null,
+440 verbose parsed url   pathname: '^1.2.1',
+440 verbose parsed url   path: '^1.2.1',
+440 verbose parsed url   href: '^1.2.1' }
+441 verbose addNamed [ 'which', '^1.2.1' ]
+442 verbose addNamed [ null, '>=1.2.1-0 <2.0.0-0' ]
+443 silly lockFile 399451f3-which-1-2-1 which@^1.2.1
+444 verbose lock which@^1.2.1 /home/greg/.npm/399451f3-which-1-2-1.lock
+445 verbose cache add [ 'wordwrap@0.0.2', null ]
+446 verbose cache add name=undefined spec="wordwrap@0.0.2" args=["wordwrap@0.0.2",null]
+447 verbose parsed url { protocol: null,
+447 verbose parsed url   slashes: null,
+447 verbose parsed url   auth: null,
+447 verbose parsed url   host: null,
+447 verbose parsed url   port: null,
+447 verbose parsed url   hostname: null,
+447 verbose parsed url   hash: null,
+447 verbose parsed url   search: null,
+447 verbose parsed url   query: null,
+447 verbose parsed url   pathname: 'wordwrap@0.0.2',
+447 verbose parsed url   path: 'wordwrap@0.0.2',
+447 verbose parsed url   href: 'wordwrap@0.0.2' }
+448 verbose cache add name="wordwrap" spec="0.0.2" args=["wordwrap","0.0.2"]
+449 verbose parsed url { protocol: null,
+449 verbose parsed url   slashes: null,
+449 verbose parsed url   auth: null,
+449 verbose parsed url   host: null,
+449 verbose parsed url   port: null,
+449 verbose parsed url   hostname: null,
+449 verbose parsed url   hash: null,
+449 verbose parsed url   search: null,
+449 verbose parsed url   query: null,
+449 verbose parsed url   pathname: '0.0.2',
+449 verbose parsed url   path: '0.0.2',
+449 verbose parsed url   href: '0.0.2' }
+450 verbose addNamed [ 'wordwrap', '0.0.2' ]
+451 verbose addNamed [ '0.0.2', '0.0.2' ]
+452 silly lockFile 24a694c8-wordwrap-0-0-2 wordwrap@0.0.2
+453 verbose lock wordwrap@0.0.2 /home/greg/.npm/24a694c8-wordwrap-0-0-2.lock
+454 verbose url raw glob
+455 verbose url resolving [ 'https://registry.npmjs.org/', './glob' ]
+456 verbose url resolved https://registry.npmjs.org/glob
+457 info trying registry request attempt 1 at 08:58:26
+458 http GET https://registry.npmjs.org/glob
+459 silly addNameRange { name: 'purs-loader',
+459 silly addNameRange   range: '>=0.4.0-0 <0.5.0-0',
+459 silly addNameRange   hasData: false }
+460 verbose cache add [ 'xhr2@^0.1.3', null ]
+461 verbose cache add name=undefined spec="xhr2@^0.1.3" args=["xhr2@^0.1.3",null]
+462 verbose parsed url { protocol: null,
+462 verbose parsed url   slashes: null,
+462 verbose parsed url   auth: null,
+462 verbose parsed url   host: null,
+462 verbose parsed url   port: null,
+462 verbose parsed url   hostname: null,
+462 verbose parsed url   hash: null,
+462 verbose parsed url   search: null,
+462 verbose parsed url   query: null,
+462 verbose parsed url   pathname: 'xhr2@^0.1.3',
+462 verbose parsed url   path: 'xhr2@^0.1.3',
+462 verbose parsed url   href: 'xhr2@^0.1.3' }
+463 verbose cache add name="xhr2" spec="^0.1.3" args=["xhr2","^0.1.3"]
+464 verbose parsed url { protocol: null,
+464 verbose parsed url   slashes: null,
+464 verbose parsed url   auth: null,
+464 verbose parsed url   host: null,
+464 verbose parsed url   port: null,
+464 verbose parsed url   hostname: null,
+464 verbose parsed url   hash: null,
+464 verbose parsed url   search: null,
+464 verbose parsed url   query: null,
+464 verbose parsed url   pathname: '^0.1.3',
+464 verbose parsed url   path: '^0.1.3',
+464 verbose parsed url   href: '^0.1.3' }
+465 verbose addNamed [ 'xhr2', '^0.1.3' ]
+466 verbose addNamed [ null, '>=0.1.3-0 <0.2.0-0' ]
+467 silly lockFile e360c436-xhr2-0-1-3 xhr2@^0.1.3
+468 verbose lock xhr2@^0.1.3 /home/greg/.npm/e360c436-xhr2-0-1-3.lock
+469 info trying registry request attempt 2 at 08:58:36
+470 http GET https://registry.npmjs.org/bin-wrapper
+471 info trying registry request attempt 2 at 08:58:36
+472 http GET https://registry.npmjs.org/async-each-series
+473 info trying registry request attempt 2 at 08:58:36
+474 http GET https://registry.npmjs.org/logalot
+475 info trying registry request attempt 2 at 08:58:36
+476 http GET https://registry.npmjs.org/bin-build
+477 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND
+478 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND
+479 verbose url raw minimatch
+480 verbose url resolving [ 'https://registry.npmjs.org/', './minimatch' ]
+481 verbose url resolved https://registry.npmjs.org/minimatch
+482 info trying registry request attempt 1 at 08:58:46
+483 http GET https://registry.npmjs.org/minimatch
+484 silly addNameRange { name: 'read', range: '>=1.0.7-0 <2.0.0-0', hasData: false }
+485 silly addNameRange { name: 'supports-color',
+485 silly addNameRange   range: '>=3.1.2-0 <4.0.0-0',
+485 silly addNameRange   hasData: false }
+486 verbose url raw purs-loader
+487 verbose url resolving [ 'https://registry.npmjs.org/', './purs-loader' ]
+488 verbose url resolved https://registry.npmjs.org/purs-loader
+489 info trying registry request attempt 1 at 08:58:46
+490 http GET https://registry.npmjs.org/purs-loader
+491 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND
+492 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND
+493 verbose url raw read
+494 verbose url resolving [ 'https://registry.npmjs.org/', './read' ]
+495 verbose url resolved https://registry.npmjs.org/read
+496 info trying registry request attempt 1 at 08:58:46
+497 http GET https://registry.npmjs.org/read
+498 verbose url raw string-stream/0.0.7
+499 verbose url resolving [ 'https://registry.npmjs.org/', './string-stream/0.0.7' ]
+500 verbose url resolved https://registry.npmjs.org/string-stream/0.0.7
+501 info trying registry request attempt 1 at 08:58:46
+502 http GET https://registry.npmjs.org/string-stream/0.0.7
+503 silly addNameRange { name: 'temp', range: '>=0.8.1-0 <0.9.0-0', hasData: false }
+504 silly addNameRange { name: 'through', range: '>=2.3.8-0 <3.0.0-0', hasData: false }
+505 silly addNameRange { name: 'tree-kill',
+505 silly addNameRange   range: '>=1.0.0-0 <2.0.0-0',
+505 silly addNameRange   hasData: false }
+506 silly addNameRange { name: 'watchpack',
+506 silly addNameRange   range: '>=1.0.1-0 <2.0.0-0',
+506 silly addNameRange   hasData: false }
+507 silly addNameRange { name: 'webpack', range: '>=1.12.9-0 <2.0.0-0', hasData: false }
+508 silly addNameRange { name: 'webpack-dev-server',
+508 silly addNameRange   range: '>=1.14.0-0 <2.0.0-0',
+508 silly addNameRange   hasData: false }
+509 silly addNameRange { name: 'which', range: '>=1.2.1-0 <2.0.0-0', hasData: false }
+510 verbose url raw supports-color
+511 verbose url resolving [ 'https://registry.npmjs.org/', './supports-color' ]
+512 verbose url resolved https://registry.npmjs.org/supports-color
+513 info trying registry request attempt 1 at 08:58:46
+514 http GET https://registry.npmjs.org/supports-color
+515 silly addNameRange { name: 'xhr2', range: '>=0.1.3-0 <0.2.0-0', hasData: false }
+516 info trying registry request attempt 2 at 08:58:56
+517 http GET https://registry.npmjs.org/to-executable-name
+518 info trying registry request attempt 2 at 08:58:56
+519 http GET https://registry.npmjs.org/ansi
+520 info trying registry request attempt 2 at 08:58:56
+521 http GET https://registry.npmjs.org/browserify
+522 info trying registry request attempt 2 at 08:58:56
+523 http GET https://registry.npmjs.org/browserify-incremental
+524 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND
+525 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND
+526 verbose url raw temp
+527 verbose url resolving [ 'https://registry.npmjs.org/', './temp' ]
+528 verbose url resolved https://registry.npmjs.org/temp
+529 info trying registry request attempt 1 at 08:59:06
+530 http GET https://registry.npmjs.org/temp
+531 verbose url raw through
+532 verbose url resolving [ 'https://registry.npmjs.org/', './through' ]
+533 verbose url resolved https://registry.npmjs.org/through
+534 info trying registry request attempt 1 at 08:59:06
+535 http GET https://registry.npmjs.org/through
+536 verbose url raw tree-kill
+537 verbose url resolving [ 'https://registry.npmjs.org/', './tree-kill' ]
+538 verbose url resolved https://registry.npmjs.org/tree-kill
+539 info trying registry request attempt 1 at 08:59:06
+540 http GET https://registry.npmjs.org/tree-kill
+541 verbose url raw watchpack
+542 verbose url resolving [ 'https://registry.npmjs.org/', './watchpack' ]
+543 verbose url resolved https://registry.npmjs.org/watchpack
+544 info trying registry request attempt 1 at 08:59:06
+545 http GET https://registry.npmjs.org/watchpack
+546 verbose url raw webpack
+547 verbose url resolving [ 'https://registry.npmjs.org/', './webpack' ]
+548 verbose url resolved https://registry.npmjs.org/webpack
+549 info trying registry request attempt 1 at 08:59:06
+550 http GET https://registry.npmjs.org/webpack
+551 verbose url raw webpack-dev-server
+552 verbose url resolving [ 'https://registry.npmjs.org/', './webpack-dev-server' ]
+553 verbose url resolved https://registry.npmjs.org/webpack-dev-server
+554 info trying registry request attempt 1 at 08:59:06
+555 http GET https://registry.npmjs.org/webpack-dev-server
+556 verbose url raw which
+557 verbose url resolving [ 'https://registry.npmjs.org/', './which' ]
+558 verbose url resolved https://registry.npmjs.org/which
+559 info trying registry request attempt 1 at 08:59:06
+560 http GET https://registry.npmjs.org/which
+561 verbose url raw wordwrap/0.0.2
+562 verbose url resolving [ 'https://registry.npmjs.org/', './wordwrap/0.0.2' ]
+563 verbose url resolved https://registry.npmjs.org/wordwrap/0.0.2
+564 info trying registry request attempt 1 at 08:59:06
+565 http GET https://registry.npmjs.org/wordwrap/0.0.2
+566 verbose url raw xhr2
+567 verbose url resolving [ 'https://registry.npmjs.org/', './xhr2' ]
+568 verbose url resolved https://registry.npmjs.org/xhr2
+569 info trying registry request attempt 1 at 08:59:06
+570 http GET https://registry.npmjs.org/xhr2
+571 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND
+572 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND
+573 info trying registry request attempt 2 at 08:59:16
+574 http GET https://registry.npmjs.org/concat-stream
+575 info trying registry request attempt 2 at 08:59:16
+576 http GET https://registry.npmjs.org/glob
+577 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND
+578 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND
+579 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND
+580 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND
+581 info trying registry request attempt 2 at 08:59:36
+582 http GET https://registry.npmjs.org/purs-loader
+583 info trying registry request attempt 2 at 08:59:36
+584 http GET https://registry.npmjs.org/minimatch
+585 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND
+586 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND
+587 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND
+588 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND
+589 info trying registry request attempt 2 at 08:59:56
+590 http GET https://registry.npmjs.org/read
+591 info trying registry request attempt 2 at 08:59:56
+592 http GET https://registry.npmjs.org/string-stream/0.0.7
+593 info trying registry request attempt 2 at 08:59:56
+594 http GET https://registry.npmjs.org/supports-color
+595 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND
+596 info trying registry request attempt 3 at 09:00:06
+597 http GET https://registry.npmjs.org/bin-wrapper
+598 info trying registry request attempt 3 at 09:00:06
+599 http GET https://registry.npmjs.org/async-each-series
+600 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND
+601 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND
+602 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND
+603 info trying registry request attempt 2 at 09:00:16
+604 http GET https://registry.npmjs.org/temp
+605 info trying registry request attempt 3 at 09:00:26
+606 http GET https://registry.npmjs.org/logalot
+607 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND
+608 info trying registry request attempt 3 at 09:00:26
+609 http GET https://registry.npmjs.org/bin-build
+610 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND
+611 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND
+612 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND
+613 info trying registry request attempt 2 at 09:00:36
+614 http GET https://registry.npmjs.org/through
+615 info trying registry request attempt 2 at 09:00:36
+616 http GET https://registry.npmjs.org/watchpack
+617 info trying registry request attempt 2 at 09:00:36
+618 http GET https://registry.npmjs.org/tree-kill
+619 info trying registry request attempt 2 at 09:00:36
+620 http GET https://registry.npmjs.org/webpack
+621 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND
+622 info trying registry request attempt 3 at 09:00:46
+623 http GET https://registry.npmjs.org/to-executable-name
+624 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND
+625 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND
+626 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND
+627 info trying registry request attempt 2 at 09:00:56
+628 http GET https://registry.npmjs.org/webpack-dev-server
+629 info trying registry request attempt 2 at 09:00:56
+630 http GET https://registry.npmjs.org/which
+631 info trying registry request attempt 2 at 09:00:56
+632 http GET https://registry.npmjs.org/wordwrap/0.0.2
+633 info trying registry request attempt 2 at 09:00:56
+634 http GET https://registry.npmjs.org/xhr2
+635 info trying registry request attempt 3 at 09:01:06
+636 http GET https://registry.npmjs.org/ansi
+637 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND
+638 info trying registry request attempt 3 at 09:01:06
+639 http GET https://registry.npmjs.org/browserify-incremental
+640 info trying registry request attempt 3 at 09:01:06
+641 http GET https://registry.npmjs.org/browserify
+642 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND
+643 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND
+644 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND
+645 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND
+646 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND
+647 silly lockFile 410f0dc0-bin-wrapper-3-0-2 bin-wrapper@^3.0.2
+648 silly lockFile 410f0dc0-bin-wrapper-3-0-2 bin-wrapper@^3.0.2
+649 verbose about to build /usr/local/lib/node_modules/purescript
+650 info /usr/local/lib/node_modules/purescript unbuild
+651 info preuninstall purescript@0.8.5
+652 info uninstall purescript@0.8.5
+653 verbose true,/usr/local/lib/node_modules,/usr/local/lib/node_modules unbuild purescript@0.8.5
+654 verbose /usr/local/bin,[object Object] binRoot
+655 info postuninstall purescript@0.8.5
+656 error network getaddrinfo ENOTFOUND
+656 error network This is most likely not a problem with npm itself
+656 error network and is related to network connectivity.
+656 error network In most cases you are behind a proxy or have bad network settings.
+656 error network
+656 error network If you are behind a proxy, please make sure that the
+656 error network 'proxy' config is set properly.  See: 'npm help config'
+657 error System Linux 3.13.0-85-generic
+658 error command "/usr/bin/nodejs" "/usr/bin/npm" "i" "-g" "purescript" "pulp"
+659 error cwd /home/greg/dev/haskell/haskellbook/chapter14/testing
+660 error node -v v0.10.25
+661 error npm -v 1.3.10
+662 error syscall getaddrinfo
+663 error code ENOTFOUND
+664 error errno ENOTFOUND
+665 verbose exit [ 1, true ]

@@ -1,0 +1,45 @@
+
+./Setup.hs,15
+main main1,2
+
+./src/Morse.hs,358
+type Morse Morse12,13
+letterToMorse letterToMorse15,16
+letterToMorse letterToMorse16,17
+morseToLetter morseToLetter55,56
+morseToLetter morseToLetter56,57
+charToMorse charToMorse59,60
+charToMorse charToMorse60,61
+stringToMorse stringToMorse62,63
+stringToMorse stringToMorse63,64
+morseToChar morseToChar65,66
+morseToChar morseToChar66,67
+
+./src/Lib.hs,65
+module LibLib0,1
+someFunc someFunc4,5
+someFunc someFunc5,6
+
+./test/Spec.hs,385
+module Main Main0,1
+allowedChars allowedChars6,7
+allowedChars allowedChars7,8
+allowedMorse allowedMorse9,10
+allowedMorse allowedMorse10,11
+charGen charGen12,13
+charGen charGen13,14
+morseGen morseGen15,16
+morseGen morseGen16,17
+prop_thereAndBackAgain prop_thereAndBackAgain18,19
+prop_thereAndBackAgain prop_thereAndBackAgain19,20
+main main23,24
+main main24,25
+
+./app/Main.hs,212
+module Main Main0,1
+convertToMorse convertToMorse10,11
+convertToMorse convertToMorse11,12
+convertFromMorse convertFromMorse25,26
+convertFromMorse convertFromMorse26,27
+main main42,43
+main main43,44

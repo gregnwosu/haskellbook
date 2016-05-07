@@ -1,0 +1,42 @@
+name:                morse
+version:             0.1.0.0
+synopsis:            Initial project template from stack
+description:         Please see README.md
+homepage:            https://github.com/githubuser/morse#readme
+license:             BSD3
+license-file:        LICENSE
+author:              Greg Nwosu
+maintainer:          greg.nwosu@gmail.com
+copyright:           2016 Author name here
+category:            Text
+build-type:          Simple
+-- extra-source-files:
+cabal-version:       >=1.10
+
+library
+  hs-source-dirs:      src
+  exposed-modules:     Morse
+  build-depends:       base >= 4.7 && < 5, containers, QuickCheck, hspec
+  ghc-options:         -Wall -fwarn-tabs
+  default-language:    Haskell2010
+
+executable morse
+  hs-source-dirs:      app
+  main-is:             Main.hs
+  ghc-options:         -threaded -rtsopts -with-rtsopts=-N -Wall -fwarn-tabs
+  build-depends:       base
+                     , morse, containers, QuickCheck, hspec
+  default-language:    Haskell2010
+
+test-suite morse-test
+  type:                exitcode-stdio-1.0
+  hs-source-dirs:      test
+  main-is:             Spec.hs
+  build-depends:       base
+                     , morse, containers, QuickCheck, hspec
+  ghc-options:         -threaded -rtsopts -with-rtsopts=-N -fno-warn-orphans -Wall
+  default-language:    Haskell2010
+
+source-repository head
+  type:     git
+  location: https://github.com/gregnwosu/morse

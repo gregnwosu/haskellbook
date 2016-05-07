@@ -33,3 +33,5 @@ cmpEq f x y = cmp f x y == EQ
 
 groupJam :: [[JamJars]]
 groupJam = groupBy ( cmpEq kind) sortJams
+
+

@@ -1,0 +1,120 @@
+
+./WordNumberTest.hs,1868
+module WordNumberTest WordNumberTest0,1
+main main8,9
+main main9,10
+half half26,27
+half half27,28
+halfIdentity halfIdentity29,30
+halfIdentity halfIdentity30,31
+listOrdered listOrdered33,34
+listOrdered listOrdered34,35
+sortedAreAlwaysOrderedProperty sortedAreAlwaysOrderedProperty38,39
+sortedAreAlwaysOrderedProperty sortedAreAlwaysOrderedProperty39,40
+ordListGen ordListGen41,42
+ordListGen ordListGen42,43
+checkLists checkLists44,45
+checkLists checkLists45,46
+plusAssociative plusAssociative48,49
+plusAssociative plusAssociative49,50
+plusCommutative plusCommutative51,52
+plusCommutative plusCommutative52,53
+multAssociative multAssociative54,55
+multAssociative multAssociative55,56
+multCommutative multCommutative56,57
+multCommutative multCommutative57,58
+powAssociative powAssociative59,60
+powAssociative powAssociative60,61
+powCommutative powCommutative61,62
+powCommutative powCommutative62,63
+quotProp quotProp65,66
+quotProp quotProp66,67
+divProp divProp68,69
+divProp divProp69,70
+applyProp applyProp71,72
+applyProp applyProp72,73
+composeProp composeProp74,75
+composeProp composeProp75,76
+runChecks:runChecks80,81
+runChecks runChecks81,82
+isPowAssoc isPowAssoc92,93
+isPowAssoc isPowAssoc93,94
+isPowCommut isPowCommut95,96
+isPowCommut isPowCommut96,97
+doesFoldConsEqAppend doesFoldConsEqAppend99,100
+doesFoldConsEqAppend doesFoldConsEqAppend100,101
+doesFoldAppZeroEqConcat doesFoldAppZeroEqConcat103,104
+doesFoldAppZeroEqConcat=doesFoldAppZeroEqConcat104,105
+readShowProp readShowProp107,108
+readShowProp readShowProp108,109
+lengthProp lengthProp110,111
+lengthProp lengthProp111,112
+doesLengthProp doesLengthProp113,114
+doesReadShow doesReadShow115,116
+square square117,118
+sqIdProp sqIdProp118,119
+sqIdProp sqIdProp119,120
+doesSqIdProp doesSqIdProp121,122
+
+./Setup.hs,15
+main main1,2
+
+./Addition.hs,956
+module Addition Addition0,1
+dividedBy dividedBy5,6
+dividedBy dividedBy6,7
+addIt addIt12,13
+addIt addIt13,14
+myMult myMult26,27
+myMult myMult27,28
+testMult testMult30,31
+testMult testMult31,32
+trivialInt trivialInt41,42
+trivialInt trivialInt42,43
+oneThroughThree oneThroughThree45,46
+oneThroughThree oneThroughThree46,47
+genBool genBool48,49
+genBool genBool49,50
+genBool' genBool'51,52
+genBool' genBool'52,53
+genOrdering genOrdering54,55
+genOrdering genOrdering55,56
+genChar genChar57,58
+genChar genChar58,59
+genTuple genTuple60,61
+genTuple genTuple61,62
+genThreeple genThreeple66,67
+genThreeple genThreeple67,68
+genEither genEither73,74
+genEither genEither74,75
+genMaybe genMaybe79,80
+genMaybe genMaybe80,81
+genMaybe' genMaybe'82,83
+genMaybe' genMaybe'83,84
+prop_additionGreater prop_additionGreater87,88
+prop_additionGreater prop_additionGreater88,89
+runQc runQc90,91
+runQc runQc91,92
+
+./src/Lib.hs,65
+module LibLib0,1
+someFunc someFunc4,5
+someFunc someFunc5,6
+
+./test/Spec.hs,30
+main main0,1
+main main1,2
+
+./WordNumber.hs,192
+module WordNumber WordNumber0,1
+digitToWord digitToWord4,5
+digitToWord digitToWord5,6
+digits digits17,18
+digits=digits18,19
+wordNumber wordNumber24,25
+wordNumber wordNumber25,26
+
+./app/Main.hs,52
+module Main Main0,1
+main main4,5
+main main5,6
