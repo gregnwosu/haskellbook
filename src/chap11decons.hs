@@ -68,7 +68,7 @@ applyShift shifts  = foldl go (shifts, [])
 
 vigenere :: String -> String -> String
 vigenere plaintxt key = unwords . snd $ foldl go (shifts, []) (words   plaintxt)
-   where shifts=map ( (-65 +)  .  ord  . toUpper) . cycle $ key
+   where shifts=map ( subtract 65  .  ord  . toUpper) . cycle $ key
          go  (shs, result) string =
            let (shiftsLeft, newString) = applyShift shs string
                in (shiftsLeft, result ++ [newString])

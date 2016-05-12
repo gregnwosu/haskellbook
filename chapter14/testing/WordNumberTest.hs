@@ -1,5 +1,5 @@
 module WordNumberTest where
-
+import Data.Char
 import Test.Hspec
 import Test.QuickCheck
 import WordNumber (digitToWord, digits, wordNumber)
@@ -120,3 +120,25 @@ sqIdProp :: (Eq a, Floating a) => a -> Bool
 sqIdProp = (==) <$>square .sqrt <*> id
 
 doesSqIdProp = quickCheck (sqIdProp :: Double -> Bool)
+
+twice f = f . f
+fourTimes = twice . twice
+
+capitalizeWord [] = []
+capitalizeWord [x] = [toUpper x]
+capitalizeWord (x:xs) = (toUpper x) : xs
+
+
+allEq (x:xs)   = all (== x)  xs
+isIdemp f x = allEq [f x, twice f x, fourTimes f x]
+isCapitalizeWordIdemp  = isIdemp capitalizeWord
+isSortIdemp  = isIdemp sort
+
+doesSortIdemp = quickCheck (isSortIdemp :: [Int] -> Bool)
+doesCapIdem = quickCheck (isCapitalizeWordIdemp :: String -> Bool)
+
+
+data Fool = Fulse | Frue deriving (Show, Eq)
+
+eqFoolGen = elements [Fulse, Frue]
+freqFoolGen = frequency [(1, return Fulse), (2, return Frue)]
