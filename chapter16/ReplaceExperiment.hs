@@ -1,29 +1,32 @@
 module ReplaceExperiment where
 
-replaceWithP :: b -> Char
-replaceWithP = const 'p'
+import Data.Char
+replaceWithP :: (Show b) => b -> Char
+replaceWithP b = case odd.ord.head.show$ b of
+  True -> 'w'
+  _ -> 'p'
 
 lms :: [Maybe [Char]]
-lms = [Just "Ave", Nothing, Just "woohoo"]
+lms = [Just "Im going to alphabet st", Nothing, Just "yeah yeah come on momma"]
 
 replaceWithP' :: [Maybe [Char]] -> Char
 replaceWithP' = replaceWithP
 
 
-liftedReplace :: Functor f => f a -> f Char
+liftedReplace :: (Show a, Functor f) => f a -> f Char
 liftedReplace = fmap replaceWithP
 
 liftedReplace' :: [Maybe [Char]] -> [Char]
 liftedReplace' = liftedReplace
 
 
-twiceLifted :: (Functor f, Functor g) => f (g a) -> f (g Char)
+twiceLifted :: (Functor f, Functor g, Show a) => f (g a) -> f (g Char)
 twiceLifted = (fmap . fmap) replaceWithP
 
 twiceLifted' :: [Maybe [Char]] -> [Maybe Char]
 twiceLifted' = twiceLifted
 
-thriceLifted :: (Functor f , Functor g , Functor h) => f (g (h a)) -> f (g (h Char))
+thriceLifted :: (Functor f , Functor g , Functor h, Show a) => f (g (h a)) -> f (g (h Char))
 thriceLifted = (fmap.fmap.fmap) replaceWithP
 
 thriceLifted' :: [Maybe [Char]] -> [Maybe [Char]]
