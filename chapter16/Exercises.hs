@@ -1,3 +1,4 @@
+{-# LANGUAGE RankNTypes #-}
 module Exercises where
 import Control.Applicative
 import Test.QuickCheck
@@ -132,3 +133,77 @@ main = do
   quickCheck (functorCompose' :: Three' Int String Int -> IntToString -> StringToChar -> Bool)
   quickCheck (functorCompose' :: Four Int String Int Int -> IntToString -> StringToChar -> Bool)
   quickCheck (functorCompose' :: Four' Int String Int Int -> IntToString -> StringToChar -> Bool)
+
+data Possibly a = LolNope | Yeppers a
+  deriving (Eq,Show)
+
+instance Functor Possibly where
+  fmap f (Yeppers a) = Yeppers $ f a
+  fmap _ _ = LolNope
+
+data Sum a b = First a | Second b deriving (Eq , Show)
+
+instance Functor (Sum a) where
+  fmap _ (First a)  = First a
+  fmap f (Second b) = Second $ f b
+
+newtype Constant a b = Constant {getConstant :: a}
+  deriving (Eq, Show)
+
+instance Functor (Constant m) where
+  fmap _ (Constant v) = Constant v
+
+data Wrap f a = Wrap (f a)
+  deriving (Eq, Show)
+
+instance Functor x => Functor (Wrap x) where
+  fmap f (Wrap x) = Wrap (fmap f x)
+
+getInt :: IO Int
+getInt = fmap read getLine
+
+meeTooIsm :: IO String
+meeTooIsm = do
+  input <- getLine
+  return (input ++ "and me too")
+
+bumpIt :: IO Int
+bumpIt = do
+  intVal <- getInt
+  return (intVal + 1)
+
+--{-# LANGUAGE RankNTypes  #-}
+--nat :: (f -> g) -> f a -> g a
+--nat = undefined
+
+type Nat f g = forall a. f a -> g a
+
+g :: Nat f g
+g = undefined
+
+maybeToList :: Nat Maybe []
+maybeToList Nothing = []
+maybeToList (Just a) = [a]
+
+-- degenerateMtl :: Nat Maybe []
+-- degenerateMtl Nothing = []
+-- degenerateMtl (Just a) = [ a + 1]
+
+data BoolAndSomethingElse a =
+  False' a  | True' a
+
+instance Functor BoolAndSomethingElse where
+  fmap f (True' a) = True' $ f a
+  fmap f (False' a) = False' $ f a
+
+data BoolAndMaybeSomethingElse a =
+  Falsish | Truish a
+
+instance Functor BoolAndMaybeSomethingElse where
+  fmap _ Falsish = Falsish
+  fmap f (Truish a) = Truish $ f a
+
+newtype Mu f = InF { outF :: f (Mu f)}
+
+instance Functor (f Mu)   where
+   fmap f (InF f (Mu f)) = undefined
