@@ -1,4 +1,4 @@
-module Exercises where
+module Exercises () where
 
 import Data.List (elemIndex)
 import Control.Applicative
@@ -6,6 +6,8 @@ import Data.Monoid
 import Test.QuickCheck
 import Test.QuickCheck.Checkers
 import Test.QuickCheck.Classes
+
+
 
 
 data List a =
@@ -55,5 +57,9 @@ instance Eq a => EqProp (ZipList' a) where
 
          ys' = let (ZipList' l) = ys
                 in take' 3000 l
-main :: IO()
-main = quickBatch $ applicative (Nil :: List (Char,Char,Char ))
+
+n :: List (Char,Char,Char )
+n = Nil
+
+t :: IO()
+t = quickBatch $ applicative n

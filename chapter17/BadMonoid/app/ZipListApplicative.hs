@@ -1,4 +1,4 @@
-module ZipListApplicative where
+module ZipListApplicative () where
 
 import Control.Applicative
 import Data.Monoid
@@ -12,8 +12,8 @@ data List a = Nil | Cons a (List a)
 instance Monoid (List a) where
   mempty = Nil
   mappend Nil Nil = Nil
-  mappend xs Nil = xs
-  mappend Nil ys = ys
+  mappend xs Nil  = xs
+  mappend Nil ys  = ys
   mappend (Cons x xs) l = Cons x (xs `mappend` l)
 
 instance Functor List where
@@ -83,11 +83,12 @@ instance Applicative ZipList' where
    ZipList' (Cons f fs) <*> ZipList' (Cons x xs) =
      ZipList' (Cons (f x) Nil) <> (pure f  <*> ZipList' xs) <> (ZipList' fs <*> pure x)
 
-     -- <> (ZipList' fs <*>  ZipList' xs)
-
 instance Arbitrary a => Arbitrary (ZipList' a) where
   arbitrary = ZipList' . foldr Cons Nil <$> listOf arbitrary
 
+n :: ZipList' (Char,Char,Char )
+n = ZipList' Nil
 
-main :: IO()
-main = quickBatch $ applicative (ZipList' Nil :: ZipList' (Char,Char,Char ))
+
+test :: IO()
+test = quickBatch $ applicative n

@@ -1,4 +1,4 @@
-module BadMonoid where
+module BadMonoid ()  where
 
 import Data.Monoid
 import Test.QuickCheck

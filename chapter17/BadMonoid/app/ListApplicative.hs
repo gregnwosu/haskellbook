@@ -1,4 +1,4 @@
-module ListApplicative where
+module ListApplicative () where
 
 import Data.List (elemIndex)
 import Control.Applicative
@@ -43,11 +43,13 @@ take' :: Int -> List a -> List a
 take' 0 l = l
 take' n (Cons _ t) = take' (subtract n 1) t
 
-
 instance Eq a => EqProp (List a) where
   xs =-= ys = xs' `eq` ys'
      where xs' = take' 3000 xs
            ys' = take' 3000 ys
 
+n :: List (Char,Char,Char)
+n = Nil
+
 main :: IO()
-main = quickBatch $ applicative (Nil :: List (Char,Char,Char ))
+main = quickBatch $ applicative n
