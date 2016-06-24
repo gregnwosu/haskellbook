@@ -1,6 +1,9 @@
 module EitherMonad where
 
 import Control.Monad
+import Test.QuickCheck
+import Test.QuickCheck.Checkers
+import Test.QuickCheck.Classes
 
 type Founded = Int
 type Coders = Int
@@ -53,8 +56,19 @@ instance Applicative (Sum a) where
   _ <*> (First f)  = First f
   (Second f) <*> (Second x) = Second (f x)
 
-
 instance Monad (Sum a) where
    return = pure
    (First f) >>= _ = First f
    (Second x) >>=  f = f x
+
+instance (Arbitrary a, Arbitrary e)  => Arbitrary (Sum e a) where
+  arbitrary =  frequency [(1, First <$> arbitrary), (2, Second <$> arbitrary)]
+
+instance (Eq b , Eq a) => EqProp (Sum a b) where
+  (=-=) = eq
+
+o :: Sum String (String, String,String)
+o = undefined
+
+
+main = quickBatch $ monad o
