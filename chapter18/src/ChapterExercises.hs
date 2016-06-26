@@ -132,3 +132,23 @@ main = do
   quickBatch $ monoid  list
   quickBatch $ applicative list
   quickBatch $ monad list
+
+
+j :: Monad m => m (m a) -> m a
+j  = (>>= id)
+
+l1 :: Monad m => (a -> b ) -> m a -> m b
+l1 f =  (>>= return . f) 
+
+l2 :: Monad m => (a -> b -> c) -> m a -> m b -> m c
+l2 f ma mb = ma >>= \a -> mb >>= \b -> return $ f a b
+
+a :: Monad m => m a -> m ( a -> b ) -> m b
+a mx mf =  mf >>= (<$> mx)
+
+meh :: Monad m => [a] -> (a -> m b) -> m [b]
+meh [] _ = return []
+meh (x:xs) f = f x >>= \b ->  fmap (b:) (meh xs f )
+
+flipType :: Monad m => [m a] -> m [a]
+flipType = flip meh id 
