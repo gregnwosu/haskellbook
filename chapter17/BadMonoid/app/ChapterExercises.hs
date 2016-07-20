@@ -116,7 +116,7 @@ instance (Monoid a) => Applicative (Three' a ) where
   (Three' a f f') <*> (Three' a' x  x') = Three' (a <> a') (f x) (f' x')
 
 instance (Monoid a, Monoid b) => Applicative (Three a b) where
-  pure x = Three mempty mempty x
+  pure = Three mempty mempty
   (Three a b f) <*> (Three a' b'  x) =  Three (a <> a') (b <> b') (f x)
 
 instance Monoid a => Applicative (Two a) where
@@ -131,7 +131,7 @@ instance Applicative (MyFunc x) where
   pure = MyFunc . const
   (MyFunc f) <*> (MyFunc x) = MyFunc $ f <*> x
 
-instance Applicative (ListPrime) where
+instance Applicative ListPrime where
   pure x   = ListPrime [x]
   (ListPrime fs) <*> (ListPrime xs) = ListPrime $ fs <*> xs
 
