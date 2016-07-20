@@ -1,3 +1,4 @@
+{-# LANGUAGE FlexibleContexts #-}
 module ChapterExercises where
 
 import Data.Monoid ((<>))
@@ -66,6 +67,44 @@ instance Monoid (List a) where
 
 instance Traversable List where
   traverse f Nil = pure mempty
-  traverse f (Cons x xs) = let a = Cons <$> f x
-                               b = traverse f xs
-                           in a <*> b
+  traverse f (Cons x xs) = Cons <$> f x <*> traverse f xs
+
+data Three a b c = Three a b c
+  deriving (Eq, Show , Ord)
+
+instance Functor (Three a b) where
+  fmap f (Three a b c) = Three a b $ f c
+
+instance Foldable (Three a b) where
+  foldr f z (Three a b c ) = f c z
+
+instance (Monoid a, Monoid b) => Applicative (Three a b) where
+  pure = Three mempty mempty
+  (Three a b f) <*> (Three a' b' x) = Three (a <> a') (b <> b') (f x)
+
+instance Traversable (Three a b) where
+  traverse f (Three a b c) = Three a b <$> f c
+
+data Three' a b = Three' a b b
+  deriving (Eq, Ord, Show)
+
+instance Functor (Three' a ) where
+  fmap f (Three' a b b') = Three' a (f b) (f b')
+
+instance Foldable (Three' a) where
+  foldr f z (Three' a b b') = f b $ f b' z
+
+instance Traversable (Three' a) where
+  traverse f (Three' a b b') =  Three' a <$> f b <*> f b'
+
+data S n a  = S (n a) a
+  deriving (Show , Ord , Eq )
+
+instance Functor n => Functor (S n) where
+  fmap f (S fx x) =  S (f <$> fx) (f x)
+
+instance Foldable n => Foldable (S n) where
+  foldr f z (S fx x) = foldr f (f x z) fx
+
+instance Traversable n => Traversable (S n) where
+  traverse a2fb (S na a) = S <$> traverse a2fb na <*> a2fb a

@@ -1,3 +1,4 @@
+{-# LANGUAGE FlexibleContexts #-}
 module Spec where
 
 import Test.QuickCheck.Checkers
@@ -38,6 +39,27 @@ instance Eq a => EqProp (List a) where
      where xs' = take' 300 xs
            ys' = take' 300 ys
 
+three   = undefined :: Three Int Int (Int, Int , [Int])
+three'   = undefined :: Three' Int  (Int, Int , [Int])
+s = undefined :: S [] (Int, Int , [Int])
+instance (Arbitrary a, Arbitrary b , Arbitrary c) => Arbitrary (Three a b c) where
+  arbitrary = Three <$> arbitrary <*> arbitrary <*> arbitrary
+
+instance (Arbitrary a, Arbitrary b ) => Arbitrary (Three' a b) where
+  arbitrary = Three' <$> arbitrary <*> arbitrary <*> arbitrary
+
+instance (Eq a, Eq b ) => EqProp (Three' a b ) where
+   (=-=) = eq
+
+instance (Eq a, Eq (n a)) => EqProp (S n a) where
+   (=-=) = eq
+
+instance (Eq a, Eq b , Eq c) => EqProp (Three a b c) where
+   (=-=) = eq
+
+instance (Arbitrary a, Functor n, Arbitrary (n a)) => (Arbitrary (S n a)) where
+  arbitrary =  S <$> arbitrary <*> arbitrary
+
 main :: IO()
 main = do
   quickBatch $ traversable ident
@@ -47,3 +69,8 @@ main = do
   quickBatch $ monoid list
   quickBatch $ applicative list
   quickBatch $ traversable list
+  quickBatch $ traversable three
+  quickBatch $ functor three'
+  quickBatch $ traversable three'
+  quickBatch $ functor s
+  quickBatch $ traversable s
