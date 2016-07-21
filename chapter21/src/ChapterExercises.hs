@@ -108,3 +108,34 @@ instance Foldable n => Foldable (S n) where
 
 instance Traversable n => Traversable (S n) where
   traverse a2fb (S na a) = S <$> traverse a2fb na <*> a2fb a
+
+data Tree a =
+  Empty | Leaf a | Node (Tree a) a (Tree a)
+    deriving (Eq, Show)
+
+instance Functor Tree where
+  fmap _ Empty = Empty
+  fmap f (Leaf a) = Leaf $ f a
+  fmap f (Node l a r) = Node (fmap f l) (f a) (fmap f r)
+
+instance Monoid a => Monoid (Tree a) where
+  mempty = Empty
+  x `mappend` Empty = x
+  Empty `mappend` x = x
+  l `mappend` r = Node l mempty r
+
+-- instance  Foldable Tree where
+--   foldMap _ Empty = mempty
+--   foldMap f (Leaf x) = f x
+--   foldMap f (Node l x r) = foldMap f l <> f x <> foldMap f r
+
+instance Foldable Tree where
+  foldr _ z Empty = z
+  foldr f z (Leaf x) = f x z
+  foldr f z (Node l x r) = foldr f (f x ( foldr f z r)) l
+
+
+instance Traversable Tree where
+  traverse f Empty = pure Empty
+  traverse f (Leaf x) = Leaf <$> f x
+  traverse f (Node l x r) = Node <$> traverse f l <*> f x <*> traverse f r

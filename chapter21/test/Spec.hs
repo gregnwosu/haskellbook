@@ -1,4 +1,5 @@
 {-# LANGUAGE FlexibleContexts #-}
+
 module Spec where
 
 import Test.QuickCheck.Checkers
@@ -23,6 +24,10 @@ instance Eq a => EqProp (Optional a)  where
   (=-=) = eq
 instance Arbitrary a => Arbitrary (Optional a) where
   arbitrary = frequency [(1, Yep <$> arbitrary), (1, return Nada)]
+
+instance Arbitrary a => Arbitrary (Tree a) where
+  arbitrary = frequency [(1, pure Empty), (3, Leaf <$> arbitrary), (3, Node <$> arbitrary <*> arbitrary <*> arbitrary)]
+
 opt   = undefined :: Optional (Int, Int , [Int])
 
 instance Arbitrary a => Arbitrary (List a) where
@@ -34,12 +39,25 @@ take' 0 _ = Nil
 take' _ Nil = Nil
 take' n (Cons h t) = Cons h $ take' (n - 1) t
 
+
+prune :: Int -> Tree a -> Tree a
+prune 0 _ = Empty
+prune _ Empty = Empty
+prune _ (Leaf x)= Leaf x
+prune n (Node l x r) = Node (prune (n-1) l) x (prune (n-1) r)
+
 instance Eq a => EqProp (List a) where
   xs =-= ys = xs' `eq` ys'
      where xs' = take' 300 xs
            ys' = take' 300 ys
 
+instance Eq a => EqProp (Tree a) where
+  xs =-= ys = xs' `eq` ys'
+     where xs' = prune 300 xs
+           ys' = prune 300 ys
+
 three   = undefined :: Three Int Int (Int, Int , [Int])
+tree   = undefined :: Tree  (Int, Int , [Int])
 three'   = undefined :: Three' Int  (Int, Int , [Int])
 s = undefined :: S [] (Int, Int , [Int])
 instance (Arbitrary a, Arbitrary b , Arbitrary c) => Arbitrary (Three a b c) where
@@ -74,3 +92,5 @@ main = do
   quickBatch $ traversable three'
   quickBatch $ functor s
   quickBatch $ traversable s
+  quickBatch $ functor tree
+  quickBatch $ traversable tree
