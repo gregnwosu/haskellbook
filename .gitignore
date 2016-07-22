@@ -8,3 +8,4 @@ TAGS/**
 *.o
 TAGS/*
 **/TAGS/*
+**/TAGS/**
