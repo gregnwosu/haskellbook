@@ -83,8 +83,18 @@ frooty' = \r -> bar (foo r) r
 
 fooBind m k  =  \r -> k (m r) r
 
+getDogRM :: Person -> Dog
+getDogRM = do
+  name <- dogName
+  addy <- address
+  return $ Dog name addy
+
+
+getDogRM' :: Reader Person Dog
+getDogRM' = Dog <$> dogName <*> address <$> ask
+
+  
 instance Monad (Reader r) where
   return = pure
   (>>=) :: Reader r a -> (a -> Reader r b) -> Reader r b
-  (Reader ra) >>= aRb =  Reader $ runReader <$> (aRb . ra ) <*> id   
-                        
+  (Reader ra) >>= aRb = Reader $ runReader <$> (aRb . ra ) <*> id
