@@ -93,7 +93,6 @@ getDogRM = do
 getDogRM' :: Reader Person Dog
 getDogRM' = Dog <$> dogName <*> address <$> ask
 
-  
 instance Monad (Reader r) where
   return = pure
   (>>=) :: Reader r a -> (a -> Reader r b) -> Reader r b
