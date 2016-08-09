@@ -26,13 +26,17 @@ pNL s =
   putStrLn ('\n' : s)
 
 strs :: String -> Parser String
-strs (x:xs)  = do char x >> strs xs
+strs [x] = (:[]) <$> char x  
+strs (x:xs)  =  (:) <$> char x <*>  strs xs
 
 oneTwoThree :: Parser String
 oneTwoThree = choice [string "123" >> eof >> return "123", string "12">> eof >> return "12", string "1" >> eof >> return "1"]
 
 intEof :: String -> Result Integer
 intEof = parseString (integer >>= \i -> eof >> return i) mempty
+
+intEof' :: String -> Result Integer
+intEof' = parseString (integer <* eof) mempty
 
 
 main = do
