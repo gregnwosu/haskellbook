@@ -1,3 +1,4 @@
+
 module LearnParsers where
 
 import Text.Trifecta
@@ -38,7 +39,6 @@ intEof = parseString (integer >>= \i -> eof >> return i) mempty
 intEof' :: String -> Result Integer
 intEof' = parseString (integer <* eof) mempty
 
-
 main = do
   pNL "stop:"
   testParse stop
@@ -50,3 +50,4 @@ main = do
   testParse oneTwo
   pNL "oneTwo':"
   testParse oneTwo'
+
