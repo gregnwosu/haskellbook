@@ -55,9 +55,41 @@ parseDigit :: Parser Char
 parseDigit = oneOf "0123456789"
 
 toInt :: String -> Integer
-toInt = fromIntegral . snd . foldr go (0,0) 
+toInt = fromIntegral . snd . foldr go (0,0)
           where go c (p,s) = (p+1, (ord c - 48) * (10^p) + s)
-                
+
 
 base10Integer :: Parser Integer
 base10Integer = toInt <$> some parseDigit
+
+parseMinusToNeg = (pure (-1) <$>char '-') <|> pure 1
+
+base10Integer' :: Parser Integer
+base10Integer' =  (*) <$> parseMinusToNeg <*> base10Integer
+
+-- ******************************************************************************************************************************************************************************************************************** QUESTION 4
+
+type NumberingPlanArea = Int
+type Exchange = Int
+type LineNumber = Int
+
+
+data PhoneNumber =
+    PhoneNumber NumberingPlanArea Exchange LineNumber
+                deriving (Eq, Show)
+
+numbers n = toInt <$> count n digit
+
+
+
+parseNumberPlan :: Parser NumberingPlanArea
+parseNumberPlan = fromIntegral <$>  (option ""  ( string "1-")   *> (p <|> (between bo bc p)))
+                where p = (fromIntegral <$> numbers 3)
+                      bo = symbol "("
+                      bc = symbol ")"    
+parseExchange :: Parser Exchange
+parseExchange = (option ' ' (oneOf " -") ) *> (fromIntegral <$>numbers 3)
+parseLineNumber :: Parser LineNumber
+parseLineNumber = (option ' ' (char '-') ) *> (fromIntegral <$> numbers 3)
+parsePhone :: Parser PhoneNumber
+parsePhone = PhoneNumber <$> parseNumberPlan <*> parseExchange <*> parseLineNumber
