@@ -102,10 +102,10 @@ type CommentEntry = String
 type Activity = String
 
 data ActivityLine =
-    ActivityLine TimeOfDay Activity  CommentEntry
+    ActivityLine TimeOfDay Activity CommentEntry
     deriving (Show)
 data LogEntry =
-    DayLogEntry Day [ActivityLine] | CommentLogEntry CommentEntry
+    DayLogEntry Day  CommentEntry [ActivityLine] | CommentLogEntry CommentEntry
     deriving (Show)
 data LogFile =
      LogFile [LogEntry]
@@ -119,22 +119,31 @@ parseTimeOfDay = TimeOfDay <$> (fromIntegral <$> integer) <* char ':' <*> (fromI
 parseActivityLine :: Parser ActivityLine
 parseActivityLine = ActivityLine
                     <$> (parseTimeOfDay )
-                    <*> (some anyChar) -- <* notFollowedBy (string "--"))
-                    <*> (option "" parseCommentEntry)
+                    <*> (some(notChar '\n'))
+                    <*> pure ""
 
 parseDay :: Parser Day
-parseDay = fromGregorian <$> (toInt <$> count 4 digit) <* char '-' <*> (fromIntegral . toInt <$> count 2 digit) <* char '-' <*> (fromIntegral . toInt <$> count 2 digit)
+parseDay = fromGregorian <$>
+           (toInt <$> count 4 digit) <* char '-' <*>
+           (fromIntegral . toInt <$> count 2 digit) <* char '-' <*>
+           (fromIntegral . toInt <$> count 2 digit)
 
 parseLogEntry :: Parser LogEntry
-parseLogEntry = ((CommentLogEntry <$> parseCommentEntry) <|>
-                (DayLogEntry <$> (string "# " *> parseDay <* newline)  <*> some parseActivityLine)) <* (pure () <$> newline <|> eof) 
+parseLogEntry = (CommentLogEntry <$>
+                 parseCommentEntry <* newline )
+                <|>
+                 DayLogEntry <$>
+                 (string "# " *> parseDay ) <*>
+                 (option "" (char ' ' *> parseCommentEntry ) <* newline) <*>
+                 ( sepEndBy  parseActivityLine  newline)
+
 parseLogFile :: Parser LogFile
-parseLogFile = LogFile <$> some parseLogEntry
+parseLogFile = LogFile <$> (some parseLogEntry  ) <* eof
 
 exampleLog :: String
 exampleLog = [r|-- wheee a comment
 # 2025-02-05
-08:00 Breakfast
+08:01 Breakfast
 09:00 Sanitizing moisture collector
 11:00 Exercising in high-grav gym
 12:00 Lunch
@@ -154,5 +163,20 @@ exampleLog = [r|-- wheee a comment
 13:45 Commute home for rest
 14:15 Read
 21:00 Dinner
+21:15 Read
+22:00 Sleep|]
+
+
+exampleLog2 = [r|-- wheee a comment
+# 2025-02-05
+08:01 Breakfast
+09:00 Sanitizing moisture collector
+11:00 Exercising in high-grav gym
+12:00 Lunch
+13:00 Programming
+17:00 Commuting home in rover
+17:30 R&R
+19:00 Dinner
+21:00 Shower
 21:15 Read
 22:00 Sleep|]
