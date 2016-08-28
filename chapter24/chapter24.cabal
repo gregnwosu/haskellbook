@@ -27,7 +27,7 @@ library
                        scientific >= 0.3.4.9,
                        text >= 1.2.2.1,
                        transformers >= 0.4.2.0,
-                       trifecta
+                       trifecta, time >= 1.5.0
   default-language:    Haskell2010
 
 executable chapter24-exe
@@ -46,7 +46,7 @@ executable chapter24-exe
                      , scientific >= 0.3.4.9
                      , text >= 1.2.2.1
                      , transformers >= 0.4.2.0
-                     , trifecta
+                     , trifecta, time >= 1.5.0
   default-language:    Haskell2010
 
 test-suite chapter24-test
@@ -65,7 +65,7 @@ test-suite chapter24-test
                      , scientific >= 0.3.4.9
                      , text >= 1.2.2.1
                      , transformers >= 0.4.2.0
-                     , trifecta
+                     , trifecta, time >= 1.5.0
   ghc-options:         -threaded -rtsopts -with-rtsopts=-N
   default-language:    Haskell2010
 

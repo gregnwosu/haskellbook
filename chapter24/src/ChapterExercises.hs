@@ -5,6 +5,10 @@ import Text.Parser.Combinators
 import Control.Applicative
 import Text.RawString.QQ
 import Text.Trifecta
+import Data.Time.Format
+import Data.Time
+import Data.Time.LocalTime
+
 
 data NumberOrString = NOSS String | NOSI Integer
                     deriving (Show, Eq)
@@ -67,7 +71,7 @@ parseMinusToNeg = (pure (-1) <$>char '-') <|> pure 1
 base10Integer' :: Parser Integer
 base10Integer' =  (*) <$> parseMinusToNeg <*> base10Integer
 
--- ******************************************************************************************************************************************************************************************************************** QUESTION 4
+-- *************************************** QUESTION 4
 
 type NumberingPlanArea = Int
 type Exchange = Int
@@ -80,16 +84,35 @@ data PhoneNumber =
 
 numbers n = toInt <$> count n digit
 
-
-
 parseNumberPlan :: Parser NumberingPlanArea
 parseNumberPlan = fromIntegral <$>  (option ""  ( string "1-")   *> (p <|> (between bo bc p)))
-                where p = (fromIntegral <$> numbers 3)
+                where p = fromIntegral <$> numbers 3
                       bo = symbol "("
-                      bc = symbol ")"    
+                      bc = symbol ")"
 parseExchange :: Parser Exchange
-parseExchange = (option ' ' (oneOf " -") ) *> (fromIntegral <$>numbers 3)
+parseExchange = option ' ' (oneOf " -")  *> (fromIntegral <$> numbers 3)
 parseLineNumber :: Parser LineNumber
-parseLineNumber = (option ' ' (char '-') ) *> (fromIntegral <$> numbers 3)
+parseLineNumber = option ' ' (char '-')  *> (fromIntegral <$> numbers 3)
 parsePhone :: Parser PhoneNumber
 parsePhone = PhoneNumber <$> parseNumberPlan <*> parseExchange <*> parseLineNumber
+-------------------------------------------------- question 5
+type CommentEntry = String
+type Activity = String
+data ActivityLine = ActivityLine TimeOfDay Activity (Maybe CommentEntry)
+data LogEntry = DayLogEntry Day [ActivityLine] | CommentLogEntry CommentEntry
+data LogFile = LogFile [LogEntry]
+
+parseCommentEntry :: Parser CommentEntry
+parseCommentEntry = string "-- " *> some (notChar '\n')
+parseTimeOfDay :: Parser TimeOfDay
+parseTimeOfDay = TimeOfDay <$> (fromIntegral <$> integer) <* char ':' <*> (fromIntegral <$> integer) <*> pure 0
+
+parseActivityLine :: Parser ActivityLine
+parseActivityLine = ActivityLine <$> parseTimeOfDay <* char ' ' <*> some anyChar <* notFollowedBy (string "--") <*> optional parseCommentEntry
+ 
+parseDay :: Parser Day
+parseDay = fromGregorian <$> (toInt <$> count 4 digit) <* char '-' <*> (fromIntegral . toInt <$> count 2 digit) <* char '-' <*> (fromIntegral . toInt <$> count 2 digit)
+                    
+parseLogEntry :: Parser LogEntry
+parseLogEntry = (CommentLogEntry <$> parseCommentEntry) <|>
+                (DayLogEntry <$> (string "# " *> parseDay)  <*> some parseActivityLine) 
