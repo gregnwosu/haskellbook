@@ -1,8 +1,7 @@
-
+{-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE QuasiQuotes #-}
-
 module ChapterExercises where
-
+import Text.Printf
 import Data.Char
 import Text.Parser.Combinators
 import Control.Applicative
@@ -11,7 +10,7 @@ import Text.Trifecta
 import Data.Time.Format
 import Data.Time
 import Data.Time.LocalTime
-
+import Data.List
 
 data NumberOrString = NOSS String | NOSI Integer
                     deriving (Show, Eq)
@@ -97,51 +96,85 @@ parseLineNumber = option ' ' (char '-')  *> (fromIntegral <$> numbers 3)
 parsePhone :: Parser PhoneNumber
 parsePhone = PhoneNumber <$> parseNumberPlan <*> parseExchange <*> parseLineNumber
 -------------------------------------------------- question 5
-type CommentEntry = String
-type Activity = String
+newtype CommentEntry = CommentEntry (Maybe String)
+    deriving (Eq)
+newtype Activity = Activity String
+    deriving (Eq)
+
+instance Show CommentEntry where
+    show (CommentEntry (Just c)) = "-- " ++ c
+    show _ = ""
+
+instance Show Activity where
+    show (Activity c) = c
 
 data ActivityLine =
     ActivityLine TimeOfDay Activity CommentEntry
-    deriving (Show)
+                 deriving (Eq)
+
+instance Show ActivityLine where
+    show (ActivityLine (TimeOfDay h m _) a c) =
+        printf "%02d:%02d %s%s" h m  (show a) (go c)
+               where
+                 go :: CommentEntry -> String
+                 go (CommentEntry Nothing) = ""
+                 go c = printf " %s" (show c)
+
+
 data LogEntry =
     DayLogEntry Day  CommentEntry [ActivityLine] | CommentLogEntry CommentEntry
-    deriving (Show)
+        deriving (Eq)
+
+instance Show LogEntry where
+    show (DayLogEntry day c lines) =
+        printf "\n# %04d-%02d-%02d%s%s" y m d (go c) l
+              where (y,m,d) = toGregorian day
+                    l = '\n':(intercalate "\n" $ show <$> lines)
+                    go :: CommentEntry -> String
+                    go ce@(CommentEntry (Just c)) = printf " %s" (show ce)
+                    go _ = ""
+    show (CommentLogEntry c) = "\n" ++ show c
+
 data LogFile =
      LogFile [LogEntry]
-     deriving (Show)
+             deriving (Eq)
+instance Show LogFile where
+    show (LogFile entries) = tail $ concat $ show <$> entries
 
 parseCommentEntry :: Parser CommentEntry
-parseCommentEntry =  string "-- " *> some (notChar '\n')
+parseCommentEntry =  string "-- " *> (CommentEntry . Just <$>some (notChar '\n'))
+
 parseTimeOfDay :: Parser TimeOfDay
 parseTimeOfDay = TimeOfDay <$> (fromIntegral <$> integer) <* char ':' <*> (fromIntegral <$> integer) <*> pure 0
 
 parseActivityLine :: Parser ActivityLine
 parseActivityLine =  ActivityLine
                      <$> parseTimeOfDay
-                     <*> (some ( notChar '\n'))
-                     <*> pure ""
+                     <*> (Activity <$> some ( notChar '\n'))
+                     <*> (CommentEntry <$> (pure Nothing))
+
 parseActivityLine' :: Parser ActivityLine
 parseActivityLine' = ActivityLine
                     <$> parseTimeOfDay
-                    <*> manyTill (notChar '\n') (string " -- ") 
-                    <*> (some (notChar '\n'))
+                    <*> (Activity <$> (manyTill (notChar '\n') (string " -- ")))
+                    <*> (CommentEntry . Just <$> some (notChar '\n'))
+
 parseActivityLine'' :: Parser ActivityLine
 parseActivityLine'' =  try parseActivityLine' <|> parseActivityLine
+
 parseDay :: Parser Day
 parseDay = fromGregorian <$>
            (toInt <$> count 4 digit) <* char '-' <*>
            (fromIntegral . toInt <$> count 2 digit) <* char '-' <*>
            (fromIntegral . toInt <$> count 2 digit)
-
 parseLogEntry :: Parser LogEntry
 parseLogEntry = (CommentLogEntry <$>
                  parseCommentEntry <* newline )
                 <|>
                  DayLogEntry <$>
                  (string "# " *> parseDay ) <*>
-                 (option "" (char ' ' *> parseCommentEntry ) <* newline) <*>
+                 (option (CommentEntry Nothing) (char ' ' *> parseCommentEntry ) <* newline) <*>
                  ( sepEndBy  parseActivityLine''  newline)
-
 parseLogFile :: Parser LogFile
 parseLogFile = LogFile <$> (some parseLogEntry  ) <* eof
 
@@ -171,30 +204,10 @@ exampleLog = [r|-- wheee a comment
 21:15 Read
 22:00 Sleep|]
 
-
-exampleLog3= [r|# 2025-02-07 -- dates not nececessarily sequential
-08:00 Breakfast -- should I try skippin bfast?
-09:00 Bumped head, passed out
-13:36 Wake up, headache
-13:37 Go to medbay
-13:40 Patch self up
-13:45 Commute home for rest
-14:15 Read
-21:00 Dinner
-21:15 Read
-22:00 Sleep|]
-
-
-exampleLog2 = [r|-- wheee a comment
-# 2025-02-05
-08:01 Breakfast
-09:00 Sanitizing moisture collector
-11:00 Exercising in high-grav gym
-12:00 Lunch
-13:00 Programming
-17:00 Commuting home in rover
-17:30 R&R
-19:00 Dinner
-21:00 Shower
-21:15 Read
-22:00 Sleep|]
+main :: IO()
+main = do
+  let Success(lf) = parseString parseLogFile mempty exampleLog
+  putStrLn (show lf)
+  let Success(lf') = parseString parseLogFile mempty (show lf)
+  putStrLn $ "are they equal ? " ++ (show $ lf == lf')
+-------------------- question 6
