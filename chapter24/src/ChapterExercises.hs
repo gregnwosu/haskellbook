@@ -1,3 +1,4 @@
+
 {-# LANGUAGE QuasiQuotes #-}
 
 module ChapterExercises where
@@ -64,7 +65,6 @@ toInt :: String -> Integer
 toInt = fromIntegral . snd . foldr go (0,0)
           where go c (p,s) = (p+1, (ord c - 48) * (10^p) + s)
 
-
 base10Integer :: Parser Integer
 base10Integer = toInt <$> some parseDigit
 
@@ -78,7 +78,6 @@ base10Integer' =  (*) <$> parseMinusToNeg <*> base10Integer
 type NumberingPlanArea = Int
 type Exchange = Int
 type LineNumber = Int
-
 
 data PhoneNumber =
     PhoneNumber NumberingPlanArea Exchange LineNumber
@@ -112,16 +111,22 @@ data LogFile =
      deriving (Show)
 
 parseCommentEntry :: Parser CommentEntry
-parseCommentEntry = string "-- " *> some (notChar '\n')
+parseCommentEntry =  string "-- " *> some (notChar '\n')
 parseTimeOfDay :: Parser TimeOfDay
 parseTimeOfDay = TimeOfDay <$> (fromIntegral <$> integer) <* char ':' <*> (fromIntegral <$> integer) <*> pure 0
 
 parseActivityLine :: Parser ActivityLine
-parseActivityLine = ActivityLine
-                    <$> (parseTimeOfDay )
-                    <*> (some(notChar '\n'))
-                    <*> pure ""
-
+parseActivityLine =  ActivityLine
+                     <$> parseTimeOfDay
+                     <*> (some ( notChar '\n'))
+                     <*> pure ""
+parseActivityLine' :: Parser ActivityLine
+parseActivityLine' = ActivityLine
+                    <$> parseTimeOfDay
+                    <*> manyTill (notChar '\n') (string " -- ") 
+                    <*> (some (notChar '\n'))
+parseActivityLine'' :: Parser ActivityLine
+parseActivityLine'' =  try parseActivityLine' <|> parseActivityLine
 parseDay :: Parser Day
 parseDay = fromGregorian <$>
            (toInt <$> count 4 digit) <* char '-' <*>
@@ -135,7 +140,7 @@ parseLogEntry = (CommentLogEntry <$>
                  DayLogEntry <$>
                  (string "# " *> parseDay ) <*>
                  (option "" (char ' ' *> parseCommentEntry ) <* newline) <*>
-                 ( sepEndBy  parseActivityLine  newline)
+                 ( sepEndBy  parseActivityLine''  newline)
 
 parseLogFile :: Parser LogFile
 parseLogFile = LogFile <$> (some parseLogEntry  ) <* eof
@@ -155,6 +160,19 @@ exampleLog = [r|-- wheee a comment
 21:15 Read
 22:00 Sleep
 # 2025-02-07 -- dates not nececessarily sequential
+08:00 Breakfast -- should I try skippin bfast?
+09:00 Bumped head, passed out
+13:36 Wake up, headache
+13:37 Go to medbay
+13:40 Patch self up
+13:45 Commute home for rest
+14:15 Read
+21:00 Dinner
+21:15 Read
+22:00 Sleep|]
+
+
+exampleLog3= [r|# 2025-02-07 -- dates not nececessarily sequential
 08:00 Breakfast -- should I try skippin bfast?
 09:00 Bumped head, passed out
 13:36 Wake up, headache
