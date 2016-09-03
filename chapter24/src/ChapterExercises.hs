@@ -11,6 +11,7 @@ import Data.Time.Format
 import Data.Time
 import Data.Time.LocalTime
 import Data.List
+import Data.Word
 
 data NumberOrString = NOSS String | NOSI Integer
                     deriving (Show, Eq)
@@ -211,3 +212,55 @@ main = do
   let Success(lf') = parseString parseLogFile mempty (show lf)
   putStrLn $ "are they equal ? " ++ (show $ lf == lf')
 -------------------- question 6
+data IPAddress = IPAddress Word32
+               deriving (Eq, Ord, Show)
+parseIPAddress :: Parser IPAddress
+parseIPAddress = do
+  quad1 <- integer
+  char '.'
+  quad2 <- integer
+  char '.'
+  quad3 <- integer
+  char '.'
+  quad4 <- integer
+  return  $ IPAddress ( fromIntegral ((quad1 * (256^3)) +
+                                      (quad2 * (256^2)) +
+                                      (quad3 * (256^1)) +
+                                      (quad4 * (256^0)))) 
+
+testIPV4 = print $ parseString parseIPAddress mempty "172.16.254.1"
+----------------- question 7
+parseHexDigit :: Parser Int
+parseHexDigit =
+    ((subtract 48) . ord <$> oneOf ['0'..'9'])
+    <|>
+    ((subtract 87). ord <$> oneOf ['a'..'f'] )
+parseHexDigits :: Parser Int
+parseHexDigits = snd . foldr go (0,0)  <$> (some parseHexDigit)
+                 where  
+                 go n (p,s) = (p+1, n * (16^p) + s)
+parseQuad :: Parser Word64
+parseQuad = do
+  quad1 <- parseHexDigits
+  char ':'
+  quad2 <- parseHexDigits
+  char ':'
+  quad3 <- parseHexDigits
+  char ':'
+  quad4 <- parseHexDigits
+  return ( fromIntegral ((quad1 * ((16^4)^3)) +
+                         (quad2 * ((16^4)^2)) +
+                         (quad3 * ((16^4)^1)) +
+                         (quad4 * ((16^4)^0)))) 
+
+data IPAddress6 = IPAddress6 Word64 Word64
+                deriving (Show)
+
+parseIPAddress6 :: Parser IPAddress6
+parseIPAddress6 = IPAddress6 <$> parseQuad <* char ':' <*> parseQuad
+
+testParseIPAddress6 = parseString parseIPAddress6 mempty "0:0:0:0:0:ffff:ac10:fe01"
+
+
+
+
