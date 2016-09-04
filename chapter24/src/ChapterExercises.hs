@@ -235,32 +235,35 @@ parseHexDigit =
     ((subtract 48) . ord <$> oneOf ['0'..'9'])
     <|>
     ((subtract 87). ord <$> oneOf ['a'..'f'] )
+    <|>
+    ((subtract 55). ord <$> oneOf ['A'..'F'] )
 parseHexDigits :: Parser Int
 parseHexDigits = snd . foldr go (0,0)  <$> (some parseHexDigit)
                  where  
                  go n (p,s) = (p+1, n * (16^p) + s)
 parseQuad :: Parser Word64
 parseQuad = do
-  quad1 <- parseHexDigits
+  quad1 <- parseHexDigits 
   char ':'
-  quad2 <- parseHexDigits
+  quad2 <- parseHexDigits 
   char ':'
-  quad3 <- parseHexDigits
+  quad3 <- parseHexDigits 
   char ':'
-  quad4 <- parseHexDigits
+  quad4 <- parseHexDigits 
   return ( fromIntegral ((quad1 * ((16^4)^3)) +
                          (quad2 * ((16^4)^2)) +
                          (quad3 * ((16^4)^1)) +
                          (quad4 * ((16^4)^0)))) 
 
 data IPAddress6 = IPAddress6 Word64 Word64
-                deriving (Show)
+
+instance Show IPAddress6 where
+    show (IPAddress6 h l) =  show $ ((fromIntegral h * (2^ 64)  + fromIntegral l ) :: Integer)
 
 parseIPAddress6 :: Parser IPAddress6
 parseIPAddress6 = IPAddress6 <$> parseQuad <* char ':' <*> parseQuad
 
 testParseIPAddress6 = parseString parseIPAddress6 mempty "0:0:0:0:0:ffff:ac10:fe01"
-
-
-
-
+testParseIPAddress6'' = parseString parseIPAddress6 mempty "FE80:0000:0000:0000:0202:B3FF:FE1E:8329"     
+testParseIPAddress6' = parseString parseIPAddress6 mempty "0:0:0:0:0:ffff:cc78:f"
+testParseIPAddress6''' = parseString parseIPAddress6 mempty "2001:DB8::8:800:200C:417A"
