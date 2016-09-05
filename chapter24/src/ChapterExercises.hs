@@ -226,7 +226,7 @@ parseIPAddress = do
   return  $ IPAddress ( fromIntegral ((quad1 * (256^3)) +
                                       (quad2 * (256^2)) +
                                       (quad3 * (256^1)) +
-                                      (quad4 * (256^0)))) 
+                                      (quad4 * (256^0))))
 
 testIPV4 = print $ parseString parseIPAddress mempty "172.16.254.1"
 ----------------- question 7
@@ -239,31 +239,41 @@ parseHexDigit =
     ((subtract 55). ord <$> oneOf ['A'..'F'] )
 parseHexDigits :: Parser Int
 parseHexDigits = snd . foldr go (0,0)  <$> (some parseHexDigit)
-                 where  
+                 where
                  go n (p,s) = (p+1, n * (16^p) + s)
-parseQuad :: Parser Word64
-parseQuad = do
-  quad1 <- parseHexDigits 
-  char ':'
-  quad2 <- parseHexDigits 
-  char ':'
-  quad3 <- parseHexDigits 
-  char ':'
-  quad4 <- parseHexDigits 
-  return ( fromIntegral ((quad1 * ((16^4)^3)) +
-                         (quad2 * ((16^4)^2)) +
-                         (quad3 * ((16^4)^1)) +
-                         (quad4 * ((16^4)^0)))) 
+toQuad :: [Int] -> Word64
+toQuad l = fromIntegral ((l!!0 * ((16^4)^3)) +
+                         (l!!1 * ((16^4)^2)) +
+                         (l!!2 * ((16^4)^1)) +
+                         (l!!3 * ((16^4)^0)))
+
+parsePart6 :: Parser Int
+parsePart6 = parseHexDigits  <* char ':'
+
+-- all combinations of 0 - n compression of pure 0             
+parseColon :: Int -> Parser [Int]
+parseColon n = foldr go seed [1..n]
+               where seed = try $ count n parsePart6
+                     go a b = b <|> try ((++) <$> ( count (n - a) parsePart6) <* char ':' <*> pure (replicate a 0))
+
 
 data IPAddress6 = IPAddress6 Word64 Word64
 
 instance Show IPAddress6 where
     show (IPAddress6 h l) =  show $ ((fromIntegral h * (2^ 64)  + fromIntegral l ) :: Integer)
 
+parserIPAddress6FromArray ::  Parser [Int] -> Parser IPAddress6
+parserIPAddress6FromArray  = fmap (IPAddress6 <$> toQuad . (take 4 ) <*> toQuad . (drop 4 ) )
+
 parseIPAddress6 :: Parser IPAddress6
-parseIPAddress6 = IPAddress6 <$> parseQuad <* char ':' <*> parseQuad
+parseIPAddress6 = parserIPAddress6FromArray p
+    where end = (count 1 parseHexDigits)
+          seed = try ((++) <$> (count 7 parsePart6) <*> end)
+          p = foldr go seed [1..8]
+          go n b = b <|> try ((++) <$> (parseColon (8 - n))  <*> ((++) <$> (count n parsePart6) <*> end))
 
 testParseIPAddress6 = parseString parseIPAddress6 mempty "0:0:0:0:0:ffff:ac10:fe01"
-testParseIPAddress6'' = parseString parseIPAddress6 mempty "FE80:0000:0000:0000:0202:B3FF:FE1E:8329"     
+testParseIPAddress6'' = parseString parseIPAddress6 mempty "FE80:0000:0000:0000:0202:B3FF:FE1E:8329"
 testParseIPAddress6' = parseString parseIPAddress6 mempty "0:0:0:0:0:ffff:cc78:f"
 testParseIPAddress6''' = parseString parseIPAddress6 mempty "2001:DB8::8:800:200C:417A"
+testParseIPAddress6'''' = parseString parseIPAddress6 mempty "2001:DB8:12::800:200C:3"
