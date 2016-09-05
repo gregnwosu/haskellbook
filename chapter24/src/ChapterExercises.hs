@@ -213,7 +213,10 @@ main = do
   putStrLn $ "are they equal ? " ++ (show $ lf == lf')
 -------------------- question 6
 data IPAddress = IPAddress Word32
-               deriving (Eq, Ord, Show)
+               deriving (Eq, Ord)
+
+instance Show IPAddress where
+    show = show
 parseIPAddress :: Parser IPAddress
 parseIPAddress = do
   quad1 <- integer
@@ -255,7 +258,6 @@ parseColon :: Int -> Parser [Int]
 parseColon n = foldr go seed [1..(n-1)]
                where seed = try $ count n parsePart6
                      go a b = b <|> try ((++) <$> ( count (n - a) parsePart6) <* char ':' <*> pure (replicate a 0) )
-
 
 data IPAddress6 = IPAddress6 Word64 Word64
 
