@@ -12,6 +12,7 @@ import Data.Time
 import Data.Time.LocalTime
 import Data.List
 import Data.Word
+import Text.Parser.Char
 
 data NumberOrString = NOSS String | NOSI Integer
                     deriving (Show, Eq)
@@ -281,3 +282,53 @@ testParseIPAddress6''' = parseString parseIPAddress6 mempty "2001:DB8::8:800:200
 
 ipv4Toipv6 :: IPAddress -> IPAddress6
 ipv4Toipv6 (IPAddress lw)= IPAddress6 0 (fromIntegral lw)
+
+
+-------------------- Question 10
+
+
+type Node = String
+type GraphName = String
+data Edge = LeafEdge Node () | BranchEdge Node Edge
+          deriving (Show )
+data GraphType = Graph | Digraph
+               deriving (Show)
+data DotGraph = DotGraph GraphType GraphName  [Edge]
+              deriving Show
+
+parseGraphType :: Parser GraphType
+parseGraphType = (p "graph" Graph) <|> (p "digraph" Digraph)
+                 where
+                   p s g = try (spaces *> string s *> spaces *> pure g)
+parseLeafEdge :: Parser Edge
+parseLeafEdge = try $ LeafEdge <$> (spaces *>  some alphaNum) <*>  pure ()
+            
+
+parseBranchEdge :: Parser Edge
+parseBranchEdge = try $ BranchEdge <$> (spaces *>  some alphaNum) <*> (spaces  *> string "->" *>  parseEdge)
+
+parseEdge :: Parser Edge
+parseEdge = (try parseBranchEdge <|> parseLeafEdge ) <* lineEnd
+                where lineEnd = spaces *> option '?' (char ';') *> spaces *> (option '?' newline)
+
+parseGraphName :: Parser String
+parseGraphName = spaces *> (some alphaNum) <* spaces
+
+parseDotGraph :: Parser DotGraph
+parseDotGraph = DotGraph <$> parseGraphType <*> parseGraphName <*> parseEdges
+                where parseEdges =
+                                  between (symbol "{") (symbol "}") (some parseEdge)
+
+graphExample = [r|
+digraph G {
+ main -> parse -> execute;
+ main -> init;
+ main -> cleanup;
+ execute -> makestring;
+ execute -> printf;
+ init -> makestring;
+ main -> printf;
+ execute -> compare;
+ }|]
+
+testGraphExample = parseString parseDotGraph mempty graphExample
