@@ -113,7 +113,7 @@ instance (Monoid a, Monoid b, Monoid c ) => Applicative (Four a b c) where
 
 instance (Monoid a) => Applicative (Three' a ) where
   pure x = Three' mempty x x
-  (Three' a f f') <*> (Three' a' x  x') = Three' (a <> a') (f x) (f' x')
+   (Three' a f f') <*> (Three' a' x  x') = Three' (a <> a') (f x) (f' x')
 
 instance (Monoid a, Monoid b) => Applicative (Three a b) where
   pure = Three mempty mempty
