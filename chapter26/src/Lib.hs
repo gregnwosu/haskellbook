@@ -4,9 +4,6 @@ module Lib
     ( someFunc
     ) where
 
-import Control.Monad
-
-
 someFunc :: IO ()
 someFunc = putStrLn "someFunc"
 
@@ -41,3 +38,28 @@ instance (Monad m) => Monad (IdentityT m ) where
         let
             aimb = ma >>= (runIdentityT .  f) 
         in IdentityT aimb
+
+
+           
+newtype MaybeT m a =
+    MaybeT {runMaybeT :: m (Maybe a)}
+
+
+instance (Functor m ) => Functor (MaybeT m) where
+    fmap f (MaybeT ma) =
+        MaybeT $ (fmap . fmap ) f ma
+
+-- instance (Applicative m) => Applicative (MaybeT m) where
+--     pure x = MaybeT . pure . pure $ x
+--     (MaybeT fab) <*> (MaybeT mma) = MaybeT $ fab <*> mma
+
+innerMost :: [Maybe (Identity (a -> b))] -> [Maybe (Identity a -> Identity b)]
+innerMost = (fmap . fmap) (<*>)
+
+second' :: [Maybe (Identity a -> Identity b)] ->
+          [Maybe (Identity a) -> Maybe (Identity b)]
+second' = fmap (<*>)
+
+final' :: [Maybe (Identity a) -> Maybe (Identity b)] ->
+         [Maybe (Identity a)] -> [Maybe (Identity b)]
+final' = (<*>)
