@@ -53,6 +53,8 @@ instance (Functor m ) => Functor (MaybeT m) where
 --     pure x = MaybeT . pure . pure $ x
 --     (MaybeT fab) <*> (MaybeT mma) = MaybeT $ fab <*> mma
 
+
+
 innerMost :: [Maybe (Identity (a -> b))] -> [Maybe (Identity a -> Identity b)]
 innerMost = (fmap . fmap) (<*>)
 
@@ -63,3 +65,18 @@ second' = fmap (<*>)
 final' :: [Maybe (Identity a) -> Maybe (Identity b)] ->
          [Maybe (Identity a)] -> [Maybe (Identity b)]
 final' = (<*>)
+
+
+lmiApply :: [Maybe (Identity (a -> b))]
+           -> [Maybe (Identity a)]
+           -> [Maybe (Identity b)]
+lmiApply f x =
+    final' (second' (innerMost f)) x
+
+
+instance (Applicative m) => Applicative (MaybeT m) where
+    pure x = MaybeT (pure (pure x))
+    (MaybeT fab) <*> (MaybeT mma) =
+        MaybeT $ (<*>) <$> fab <*> mma
+
+               
