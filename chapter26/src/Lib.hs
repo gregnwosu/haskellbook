@@ -79,4 +79,7 @@ instance (Applicative m) => Applicative (MaybeT m) where
     (MaybeT fab) <*> (MaybeT mma) =
         MaybeT $ (<*>) <$> fab <*> mma
 
-               
+
+
+newtype ReaderT r m a =
+    RunReaderT { runReaderT :: r -> m a}
