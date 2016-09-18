@@ -1,4 +1,8 @@
+{-# LANGUAGE TupleSections #-}
 module Exercises where
+import Control.Monad.Trans.Class
+import Control.Monad
+
 
 newtype EitherT e m a =
     EitherT { runEitherT :: m (Either e a)}
@@ -50,14 +54,14 @@ instance Monad m => Monad (ReaderT r m) where
     return = pure
     (ReaderT rma) >>= a2RTrmb = ReaderT $ \r ->
                                 do
-                                  a <- rma r  
+                                  a <- rma r
                                   runReaderT (a2RTrmb a) r
 
 newtype StateT s m a =
     StateT { runStateT :: s -> m (a,s)}
 
 instance (Functor m ) => Functor (StateT s m) where
-    fmap f (StateT s2mas) = let go (a, s) = (f a, s) 
+    fmap f (StateT s2mas) = let go (a, s) = (f a, s)
                             in StateT $ (fmap . fmap ) go s2mas
 
 instance (Monad m) => Applicative (StateT s m) where
@@ -76,3 +80,10 @@ instance (Monad m) => Monad (StateT s m) where
 
 newtype RWST r w s m a =
     RWST { runRWST :: r -> s -> m (a, s, w)}
+
+
+instance MonadTrans (EitherT e ) where
+    lift = EitherT . (liftM Right )
+
+instance MonadTrans (StateT s) where
+    lift x = StateT $ \s -> x >>= return . (,s)
