@@ -2,8 +2,9 @@
 module Exercises where
 import Control.Monad.Trans.Class
 import Control.Monad
-
-
+import Control.Monad.IO.Class
+import Lib
+ 
 newtype EitherT e m a =
     EitherT { runEitherT :: m (Either e a)}
 
@@ -37,11 +38,6 @@ eitherT :: Monad m =>
           -> EitherT a m b
           -> m c
 eitherT fa fb (EitherT mab) = mab >>= either fa fb
-
-
-
-newtype ReaderT r m a =
-    ReaderT { runReaderT :: r -> m a }
 
 instance Functor m => Functor (ReaderT r m) where
     fmap f (ReaderT fr2ma) = ReaderT $ (fmap . fmap) f fr2ma
@@ -81,9 +77,30 @@ instance (Monad m) => Monad (StateT s m) where
 newtype RWST r w s m a =
     RWST { runRWST :: r -> s -> m (a, s, w)}
 
-
 instance MonadTrans (EitherT e ) where
-    lift = EitherT . (liftM Right )
+    lift = EitherT . fmap Right
 
 instance MonadTrans (StateT s) where
-    lift x = StateT $ \s -> x >>= return . (,s)
+    lift x = StateT $ \s -> fmap (,s) x
+
+instance MonadTrans MaybeT  where
+    lift x = MaybeT $  Just <$> x
+
+instance MonadTrans (ReaderT r) where
+    lift x = ReaderT  $ const x
+
+instance (MonadIO m) => MonadIO (IdentityT m) where
+    liftIO  = IdentityT . liftIO
+
+instance (MonadIO m) => MonadIO (EitherT e m) where
+    liftIO = lift . liftIO
+
+instance (MonadIO m) => MonadIO (MaybeT m) where
+    liftIO = lift . liftIO
+
+instance (MonadIO m) => MonadIO (ReaderT r m) where
+    liftIO = lift . liftIO
+
+instance (MonadIO m) => MonadIO (StateT r m) where
+    liftIO = lift . liftIO
+             

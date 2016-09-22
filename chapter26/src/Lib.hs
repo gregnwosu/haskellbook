@@ -1,7 +1,7 @@
 {-# LANGUAGE InstanceSigs #-}
 
 module Lib
-    ( someFunc
+    ( someFunc, IdentityT(..) , MaybeT(..), ReaderT(..)
     ) where
 
 someFunc :: IO ()
@@ -36,11 +36,11 @@ instance (Monad m) => Monad (IdentityT m ) where
           -> IdentityT m b
     (IdentityT ma) >>= f =
         let
-            aimb = ma >>= (runIdentityT .  f) 
+            aimb = ma >>= (runIdentityT .  f)
         in IdentityT aimb
 
 
-           
+
 newtype MaybeT m a =
     MaybeT {runMaybeT :: m (Maybe a)}
 
@@ -79,7 +79,8 @@ instance (Applicative m) => Applicative (MaybeT m) where
     (MaybeT fab) <*> (MaybeT mma) =
         MaybeT $ (<*>) <$> fab <*> mma
 
-
-
+instance (Monad m ) => Monad (MaybeT m) where
+    (MaybeT  gMa ) >>= f =  MaybeT $ gMa >>= maybe (pure Nothing) (runMaybeT . f) 
+         
 newtype ReaderT r m a =
-    RunReaderT { runReaderT :: r -> m a}
+    ReaderT { runReaderT :: r -> m a}
