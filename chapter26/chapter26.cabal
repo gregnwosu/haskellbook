@@ -17,8 +17,10 @@ library
   hs-source-dirs:      src
   exposed-modules:     Lib, Exercises
   build-depends:       base >= 4.7 && < 5
-                     , transformers >= 0.5.2.0
+                     , mtl >= 2.2.1
                      , scotty
+                     , text >= 1.2.2.1
+                     , transformers >= 0.5.2.0
   default-language:    Haskell2010
 
 executable chapter26-exe
@@ -27,8 +29,10 @@ executable chapter26-exe
   ghc-options:         -threaded -rtsopts -with-rtsopts=-N
   build-depends:       base
                      , chapter26
-                     , transformers >= 0.5.2.0
+                     , mtl >= 2.2.1
                      , scotty
+                     , text >= 1.2.2.1
+                     , transformers >= 0.5.2.0
   default-language:    Haskell2010
 
 test-suite chapter26-test
@@ -37,8 +41,10 @@ test-suite chapter26-test
   main-is:             Spec.hs
   build-depends:       base
                      , chapter26
-                     , transformers >= 0.5.2.0
+                     , mtl >= 2.2.1
                      , scotty
+                     , text >= 1.2.2.1
+                     , transformers >= 0.5.2.0
   ghc-options:         -threaded -rtsopts -with-rtsopts=-N
   default-language:    Haskell2010
 

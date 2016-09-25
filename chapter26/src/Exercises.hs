@@ -4,7 +4,7 @@ import Control.Monad.Trans.Class
 import Control.Monad
 import Control.Monad.IO.Class
 import Lib
- 
+
 newtype EitherT e m a =
     EitherT { runEitherT :: m (Either e a)}
 
@@ -103,4 +103,3 @@ instance (MonadIO m) => MonadIO (ReaderT r m) where
 
 instance (MonadIO m) => MonadIO (StateT r m) where
     liftIO = lift . liftIO
-             
