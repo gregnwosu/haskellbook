@@ -17,6 +17,7 @@ library
   hs-source-dirs:      src
   exposed-modules:     Lib, Exercises
   build-depends:       base >= 4.7 && < 5
+                     , containers >= 0.5.7.1
                      , mtl >= 2.2.1
                      , scotty
                      , text >= 1.2.2.1
@@ -29,6 +30,7 @@ executable chapter26-exe
   ghc-options:         -threaded -rtsopts -with-rtsopts=-N
   build-depends:       base
                      , chapter26
+                     , containers >= 0.5.7.1
                      , mtl >= 2.2.1
                      , scotty
                      , text >= 1.2.2.1
@@ -41,6 +43,7 @@ test-suite chapter26-test
   main-is:             Spec.hs
   build-depends:       base
                      , chapter26
+                     , containers >= 0.5.7.1
                      , mtl >= 2.2.1
                      , scotty
                      , text >= 1.2.2.1
