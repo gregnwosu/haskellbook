@@ -23,12 +23,10 @@ type Handler = ActionT Text (ReaderT Config IO)
 
 bumpBoomp :: Text
             -> M.Map Text Integer
-            -> Maybe (M.Map Text Integer, Integer)
-bumpBoomp k m = do
-                v <- M.lookup k m
-                let v' = v + 1
-                let m' = M.insert k v' m
-                return (m', v')
+            ->  (M.Map Text Integer, Integer)
+bumpBoomp k m = let v'  = maybe 1 (+1) (M.lookup k m)
+                    m' =  M.insert k v' m
+                in (m', v')
 action' :: Handler ()
 action' = do
         unprefixed   <-  param "key"
@@ -36,15 +34,18 @@ action' = do
         let prefix' = prefix config
         let key' = mappend prefix' unprefixed
         counts' <- liftIO $  readIORef $ counts config
-        let newInteger =  fromMaybe (-1) (snd <$> bumpBoomp key' counts')
-        html $ mconcat ["<h1>Success! Count was: ", TL.pack $ show newInteger , "</h1>"]
+
+        let (newMap, result) =   bumpBoomp key' counts'
+        liftIO $ writeIORef (counts config) newMap
+        html $ mconcat ["<h1>Success! Count was: ", TL.pack $ show result , "</h1>"]
 
 app :: Scotty ()
 app =  get "/:key" action'
 
 main :: IO ()
 main = do
-   [prefixArg] <- getArgs
+   -- [prefixArg] <- getArgs
+   let prefixArg = "ook"
    counter <- newIORef M.empty
    let config = Config counter ""
        runR = (`runReaderT` config)
