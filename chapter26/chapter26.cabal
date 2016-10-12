@@ -19,9 +19,12 @@ library
   build-depends:       base >= 4.7 && < 5
                      , containers >= 0.5.7.1
                      , mtl >= 2.2.1
+                     , random >= 1.1
                      , scotty
                      , text >= 1.2.2.1
                      , transformers >= 0.5.2.0
+                     , trifecta
+                     , split
   default-language:    Haskell2010
 
 executable chapter26-exe
@@ -32,9 +35,12 @@ executable chapter26-exe
                      , chapter26
                      , containers >= 0.5.7.1
                      , mtl >= 2.2.1
+                     , random >= 1.1
                      , scotty
                      , text >= 1.2.2.1
                      , transformers >= 0.5.2.0
+                     , trifecta
+                     , split
   default-language:    Haskell2010
 
 test-suite chapter26-test
@@ -45,9 +51,12 @@ test-suite chapter26-test
                      , chapter26
                      , containers >= 0.5.7.1
                      , mtl >= 2.2.1
+                     , random >= 1.1
                      , scotty
                      , text >= 1.2.2.1
                      , transformers >= 0.5.2.0
+                     , trifecta
+                     , split
   ghc-options:         -threaded -rtsopts -with-rtsopts=-N
   default-language:    Haskell2010
 
