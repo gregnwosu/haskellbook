@@ -19,7 +19,6 @@ map' f (Cons x xs) = Cons (f x) (map' f xs)
 repeat' x = xs where xs = Cons x xs
 
 main = print $ take' 10 $ map' (+1) (repeat' 1)
-
 -- 1. x = _
 -- 2. x = _
 -- 3. x = _
@@ -34,7 +33,7 @@ main = print $ take' 10 $ map' (+1) (repeat' 1)
 -- 5. no
 -- 6. no
 -- 7. yes
-!x  = undefined
+x = undefined
 y = "blah"
-!v = (x,y)
-!main' = print $ snd v
+v = (x,y)
+main' = print $ snd v
