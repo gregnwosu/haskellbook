@@ -11,7 +11,5 @@ l = [1..100]
 
 
 main = defaultMain [
-        bench "list concat" $ whnf (l ++ ) l,
-        bench "seq concat " $ whnf (s SQ.>< ) s
-
-       ]
+        bench "list concat" $ whnf (l ++ ) [0],
+        bench "seq concat " $ whnf (s SQ.>< ) (SQ.singleton 0)]
