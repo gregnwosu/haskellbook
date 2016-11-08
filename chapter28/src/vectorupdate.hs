@@ -20,7 +20,8 @@ batchList n = vec // (updates [0..n])
 batchVector :: Int -> V.Vector Int
 batchVector n = V.unsafeUpdate vec (updates $ V.fromList [0..n])
 
-
+-- again this only works where we have compiled with optimisation
+-- use ```stack ghc -- -rtsopts -O2 vectortest.hs```
 
 main :: IO ()
 main = defaultMain [
