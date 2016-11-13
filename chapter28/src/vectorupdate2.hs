@@ -13,7 +13,7 @@ mutableUpdateIO n =
       mvec <- GM.new (n+1)
       go n mvec
     where go 0 v = return v
-          go n v = (MV.write v n 0) >> go ( n - 1) v
+          go n v = MV.write v n 0 >> go ( n - 1) v
 
 mutableUpdateST :: Int -> V.Vector Int
 mutableUpdateST n =
@@ -22,7 +22,7 @@ mutableUpdateST n =
       mvec <- GM.new (n+1)
       go n mvec
     where go 0 v =  V.freeze v
-          go n v = (MV.write v n 0) >> go (n - 1) v
+          go n v = MV.write v n 0 >> go (n - 1) v
 
 
 main  :: IO()
