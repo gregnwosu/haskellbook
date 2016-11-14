@@ -1,0 +1,11 @@
+module ChapterExercises where
+
+import Data.Char
+
+spaceShiftStream :: String -> String -> String
+spaceShiftStream ks (' ':ts) = ' ':spaceShiftStream ks ts
+spaceShiftStream (k:ks) (t:ts) = chr (makeNum t - (makeNum k - 65)) : spaceShiftStream ks ts
+                                 where makeNum = ord . toUpper
+
+vigenère :: String -> String -> String
+vigenère key   = spaceShiftStream  (concat <$> repeat key)

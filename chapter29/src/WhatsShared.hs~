@@ -1,0 +1,11 @@
+module WhatsShared where
+
+import Debug.Trace
+
+blah :: IO String
+blah = return "blah"
+
+blah' = trace "outer trace" blah
+
+woot :: IO String
+woot = return (trace "inner trace " "woot")
