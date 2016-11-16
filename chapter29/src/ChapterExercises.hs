@@ -28,7 +28,7 @@ forArg ("e":_) = vigenère key
 timeoutMillis :: [String] -> IO Int
 timeoutMillis (_:t:_) = return $ read t
 timeoutMillis  _ =
-    putStr "\ntimeout not supplied default to 5000 ms" >>
+    hPutStr stderr "\ntimeout not supplied default to 5000 ms" >>
     return 5000
 nextChar :: Char -> IO String
 nextChar c = isEOF >>= go
@@ -46,4 +46,4 @@ main = do
          crypt <- forArg <$> getArgs
          timeout <-  getArgs >>= timeoutMillis
          isTimedOut <- hWaitForInput stdin timeout
-         if (isTimedOut)  then  ( putStrLn " ">> readStdInTillEOF >>= print . crypt)  else (putStrLn "\ntimed out waiting for input")
+         if (isTimedOut)  then  ( putStrLn " ">> readStdInTillEOF >>= print . crypt)  else (hPutStr stderr "\ntimed out waiting for input")
