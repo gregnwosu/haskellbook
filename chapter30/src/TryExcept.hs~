@@ -1,0 +1,6 @@
+module TryExcept where
+
+import Control.Exception
+
+willFail :: Integer -> IO (Either ArithException ())
+willFail denom = try $ print $ div 5 denom
