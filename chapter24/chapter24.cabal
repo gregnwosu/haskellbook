@@ -15,7 +15,7 @@ cabal-version:       >=1.10
 
 library
   hs-source-dirs:      src
-  exposed-modules:     Lib, ChapterExercises
+  exposed-modules:     Lib, IniParser
   build-depends:       QuickCheck >= 2.8.2,
                        aeson,
                        attoparsec >= 0.13.0.2,
@@ -56,7 +56,7 @@ executable chapter24-exe
 test-suite chapter24-test
   type:                exitcode-stdio-1.0
   hs-source-dirs:      test
-  main-is:             Spec.hs
+  main-is:             DataIni.hs
   build-depends:       QuickCheck
                      , QuickCheck >= 2.8.2
                      , aeson

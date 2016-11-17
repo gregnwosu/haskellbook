@@ -20,8 +20,8 @@ instance Arbitrary TimeOfDay where
     arbitrary = TimeOfDay <$>  choose (0,23) <*> choose (0,59) <*> (MkFixed <$> choose (0,100))
 
 instance Arbitrary CommentEntry where
-    arbitrary = CommentEntry . Just <$> (elements $  show <$> [1..20])
-                
+    arbitrary = CommentEntry . Just <$> elements  (show <$> [1..20])
+
 instance Arbitrary ActivityLine where
     arbitrary = ActivityLine <$> arbitrary <*> (Activity <$> elements ["eating", "sleeping", "raving"]) <*> arbitrary
 

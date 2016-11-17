@@ -20,8 +20,8 @@ resolver: lts-7.8
 # User packages to be built.
 # Various formats can be used as shown in the example below.
 #
-# packages:
-# - some-directory
+#packages:
+#- /Users/greg/dev/haskell/haskellbook/chapter24
 # - https://example.com/foo/bar/baz-0.0.2.tar.gz
 # - location:
 #    git: https://github.com/commercialhaskell/stack.git
@@ -37,6 +37,7 @@ resolver: lts-7.8
 # will not be run. This is useful for tweaking upstream packages.
 packages:
 - '.'
+- '/Users/greg/dev/haskell/haskellbook/chapter24/'
 # Dependency packages to be pulled from upstream that are not in the resolver
 # (e.g., acme-missiles-0.3)
 extra-deps: []

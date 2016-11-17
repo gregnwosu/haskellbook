@@ -3,7 +3,13 @@ module Main where
 import Data.Char
 import System.Environment
 import System.IO
-
+import qualified IniParser as P
+import qualified Text.Trifecta as T
+import System.Directory
+import Data.List
+import System.FilePath.Posix
+import Text.Printf
+import qualified Data.Map as M
 baseChr :: Char -> Int
 baseChr = subtract 65 . ord . toUpper
 
@@ -41,11 +47,45 @@ readStdInTillEOF = do
   c <- getChar
   nextChar c
 
-main :: IO ()
-main = do
+main' :: IO ()
+main' = do
          crypt <- forArg <$> getArgs
          timeout <-  getArgs >>= timeoutMillis
          isTimedOut <- hWaitForInput stdin timeout
          if isTimedOut
            then putStrLn " ">> readStdInTillEOF >>= print . crypt
            else hPutStr stderr "\ntimed out waiting for input"
+parseConfig = T.parseString P.parseIni mempty
+
+contentsTuple :: String -> IO (String, String)
+contentsTuple filename  = do
+         contents <- readFile filename
+         return (filename, contents)
+contentsTuples :: String -> IO [(String, String)]
+contentsTuples  arg = do
+                 path <- makeAbsolute arg
+                 files' <- listDirectory path
+                 let files = filter (isSuffixOf ".ini") files'
+                 let fqfilenames = fmap (printf "%s%c%s" path pathSeparator) files
+                 traverse  contentsTuple fqfilenames
+stripFailures (_ ,(T.Failure _)) b = b
+stripFailures (fn,(T.Success config)) b = ((fn,config):b)
+
+main = do
+  args <- getArgs
+  fs <- concat <$> (traverse contentsTuples args)
+  let lookupList = (\(f,s) -> (f, parseConfig s)) <$> fs
+  let configList = foldr stripFailures [] lookupList
+  let result = M.fromList configList
+  mapM_ (putStrLn  . show) configList
+  return $ result
+
+
+
+
+
+
+
+
+
+    --
