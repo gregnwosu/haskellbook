@@ -141,7 +141,7 @@ returnUser dbConn soc username = do
 
 handleQuery :: SQLite.Connection -> Socket -> IO ()
 handleQuery dbConn soc = recv soc 1024 >>= go
-    where go _ = returnUsers dbConn soc
+    where
           go "\r\n" = do
               returnUsers dbConn soc
           go name   =
