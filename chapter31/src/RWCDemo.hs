@@ -2,7 +2,7 @@
 {-# LANGUAGE QuasiQuotes #-}
 {-# LANGUAGE RecordWildCards #-}
 module RWCDemo where
-
+import Control.Concurrent (forkIO, threadDelay)
 import Control.Exception
 import Control.Monad (forever)
 import Data.List (intersperse)
@@ -11,7 +11,6 @@ import qualified Data.Text as T
 import Data.Text.Encoding (decodeUtf8, encodeUtf8)
 import Data.Monoid
 import Data.Typeable
---import Database.SQLite.Simple hiding (close)
 import qualified Database.SQLite.Simple as SQLite
 import Database.SQLite.Simple.Types
 import Network.Socket hiding (recv)
@@ -20,47 +19,8 @@ import qualified Data.ByteString as BS
 import Network.Socket.ByteString (recv, sendAll)
 import Text.RawString.QQ
 import  Data.Aeson hiding (Null)
-
-data User =
-     User {
-      userId :: Integer,
-      username :: Text,
-      shell :: Text,
-      homeDirectory :: Text,
-      realName :: Text,
-      phone :: Text
-     }
-     deriving (Eq, Show)
-
-instance SQLite.FromRow User where
-    fromRow = User <$> SQLite.field
-                   <*> SQLite.field
-                   <*> SQLite.field
-                   <*> SQLite.field
-                   <*> SQLite.field
-                   <*> SQLite.field
-instance SQLite.ToRow User where
-    toRow (User id_ username shell homeDir realName phone) =
-        SQLite.toRow (id_, username, shell, homeDir, realName, phone)
-
-
-instance FromJSON User where
-    parseJSON (Object v) = User <$> v .: "userId"
-                                <*> v .: "username"
-                                <*> v .: "shell"
-                                <*> v .: "homeDirectory"
-                                <*> v .: "realName"
-                                <*> v .: "phone"
-
-instance ToJSON User where
-    toJSON (User userId' username' shell' homeDirectory' realName' phone') =
-        object  [
-     "userId" .= userId',
-     "username" .= username',
-     "shell" .= shell',
-     "homeDirectory" .= homeDirectory',
-     "realName" .= realName',
-     "phone" .= phone' ]
+import qualified Data.ByteString.Char8 as LBSC
+import UserTools
 
 createUsers :: Query
 createUsers = [r|
@@ -72,9 +32,6 @@ CREATE TABLE IF NOT EXISTS users
    realName TEXT,
    phone TEXT)|]
 
-insertUser :: Query
-insertUser =
-    "INSERT INTO users VALUES (?,?,?,?,?,?)"
 
 allUsers :: Query
 allUsers =
@@ -153,21 +110,38 @@ handleQueries dbConn sock =
       (soc, _) <- accept sock
       putStrLn "Got connection, handle query"
       handleQuery dbConn soc
-      sClose soc
+      close soc
+
+handleDBQueries :: SQLite.Connection -> Socket -> IO()
+handleDBQueries conn sock = forever $ do
+                     (soc, _) <- accept sock
+                     putStrLn "Got connection, handle query"
+                     json <- recv soc 1024
+                     let maybeUser = decodeStrict   json
+                     traverse (processUser  conn) maybeUser
+                     close soc
+
+
+getSock port = do
+    addrinfos <- getAddrInfo
+                (Just (defaultHints { addrFlags = [AI_PASSIVE]}))
+                Nothing
+                (Just port)
+    let serveraddr = head addrinfos
+    sock <- socket (addrFamily serveraddr)
+          Stream defaultProtocol
+    bind sock (addrAddress serveraddr)
+-- only one connection open at a time
+    listen sock 1
+    return sock
 
 main' :: IO ()
 main' = withSocketsDo $ do
-         addrinfos <- getAddrInfo
-                     (Just (defaultHints { addrFlags = [AI_PASSIVE]}))
-                     Nothing
-                     (Just "79")
-         let serveraddr = head addrinfos
-         sock <- socket (addrFamily serveraddr)
-                Stream defaultProtocol
-         bind sock (addrAddress serveraddr)
-         listen sock 1
-         -- only one connection open at a time
+         sock1 <- getSock "79"
+         sock2 <- getSock "78"
          conn <- SQLite.open "resources/finger.db"
-         handleQueries conn sock
+         forkIO $ handleQueries conn sock1
+         forkIO $ handleDBQueries conn sock2
          SQLite.close conn
-         sClose sock
+         close sock1
+         close sock2
