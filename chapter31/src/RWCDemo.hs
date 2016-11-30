@@ -1,7 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE QuasiQuotes #-}
 {-# LANGUAGE RecordWildCards #-}
-
 module RWCDemo where
 
 import Control.Exception
@@ -10,7 +9,7 @@ import Data.List (intersperse)
 import Data.Text (Text)
 import qualified Data.Text as T
 import Data.Text.Encoding (decodeUtf8, encodeUtf8)
-
+import Data.Monoid
 import Data.Typeable
 --import Database.SQLite.Simple hiding (close)
 import qualified Database.SQLite.Simple as SQLite
@@ -20,6 +19,7 @@ import Data.ByteString (ByteString)
 import qualified Data.ByteString as BS
 import Network.Socket.ByteString (recv, sendAll)
 import Text.RawString.QQ
+import  Data.Aeson hiding (Null)
 
 data User =
      User {
@@ -43,6 +43,25 @@ instance SQLite.ToRow User where
     toRow (User id_ username shell homeDir realName phone) =
         SQLite.toRow (id_, username, shell, homeDir, realName, phone)
 
+
+instance FromJSON User where
+    parseJSON (Object v) = User <$> v .: "userId"
+                                <*> v .: "username"
+                                <*> v .: "shell"
+                                <*> v .: "homeDirectory"
+                                <*> v .: "realName"
+                                <*> v .: "phone"
+
+instance ToJSON User where
+    toJSON (User userId' username' shell' homeDirectory' realName' phone') =
+        object  [
+     "userId" .= userId',
+     "username" .= username',
+     "shell" .= shell',
+     "homeDirectory" .= homeDirectory',
+     "realName" .= realName',
+     "phone" .= phone' ]
+
 createUsers :: Query
 createUsers = [r|
 CREATE TABLE IF NOT EXISTS users
@@ -64,6 +83,7 @@ allUsers =
 getUserQuery :: Query
 getUserQuery =
     "SELECT * from users where username = ?"
+
 
 data DuplicateData =
      DuplicateData
@@ -117,11 +137,12 @@ formatUser (User _ username shell homeDir realName _) =
 returnUser :: SQLite.Connection -> Socket -> Text -> IO ()
 returnUser dbConn soc username = do
   maybeUser <- getUser dbConn (T.strip username)
-  maybe (putStrLn (" Couldnt find matching user for username" ++ (show username))) (sendAll soc . formatUser) maybeUser
+  maybe (putStrLn (" Couldnt find matching user for username" ++ show username)) (sendAll soc . formatUser) maybeUser
 
 handleQuery :: SQLite.Connection -> Socket -> IO ()
-handleQuery dbConn soc = recv soc 1234 >>= go
-    where go "\r\n" =
+handleQuery dbConn soc = recv soc 1024 >>= go
+    where go _ = returnUsers dbConn soc
+          go "\r\n" = do
               returnUsers dbConn soc
           go name   =
               returnUser dbConn soc (decodeUtf8 name)
@@ -131,11 +152,11 @@ handleQueries dbConn sock =
     forever $ do
       (soc, _) <- accept sock
       putStrLn "Got connection, handle query"
-      handleQuery dbConn sock
-      close soc
+      handleQuery dbConn soc
+      sClose soc
 
-main :: IO ()
-main = withSocketsDo $ do
+main' :: IO ()
+main' = withSocketsDo $ do
          addrinfos <- getAddrInfo
                      (Just (defaultHints { addrFlags = [AI_PASSIVE]}))
                      Nothing
@@ -149,4 +170,4 @@ main = withSocketsDo $ do
          conn <- SQLite.open "resources/finger.db"
          handleQueries conn sock
          SQLite.close conn
-         close sock
+         sClose sock

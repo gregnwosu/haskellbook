@@ -133,7 +133,8 @@ instance Show LogEntry where
               where (y,m,d) = toGregorian day
                     l = '\n':(intercalate "\n" $ show <$> lines)
                     go :: CommentEntry -> String
-                    go ce@(CommentEntry (Just c)) = printf " %s" (show ce)
+                    go ce@(CommentEntry (Just c)) =
+                        printf " %s" (show ce)
                     go _ = ""
     show (CommentLogEntry c) = "\n" ++ show c
 
@@ -286,7 +287,6 @@ ipv4Toipv6 (IPAddress lw)= IPAddress6 0 (fromIntegral lw)
 
 -------------------- Question 10
 
-
 type Node = String
 type GraphName = String
 data Edge = LeafEdge Node () | BranchEdge Node Edge
@@ -302,7 +302,6 @@ parseGraphType = (p "graph" Graph) <|> (p "digraph" Digraph)
                    p s g = try (spaces *> string s *> spaces *> pure g)
 parseLeafEdge :: Parser Edge
 parseLeafEdge = try $ LeafEdge <$> (spaces *>  some alphaNum) <*>  pure ()
-            
 
 parseBranchEdge :: Parser Edge
 parseBranchEdge = try $ BranchEdge <$> (spaces *>  some alphaNum) <*> (spaces  *> string "->" *>  parseEdge)
