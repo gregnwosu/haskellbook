@@ -1,6 +1,6 @@
 # Why
-Embarassingly enough one of the primary reasons I had for learning Haskell was the usenet post "...and then theres Haskell" which I 
-have included in full below. I wondered if Haskell could really be that....different. I now confess, its all true ;-)
+Embarassingly enough one of the primary reasons I had for learning Haskell was the usenet post
+"...and then theres Haskell" which I have included in full below. I wondered if Haskell could really be that....different. I now confess, its all true ;-)
 
 # How
 I first decided to learn haskell around December 2013 its now December 2016 and I think I've finally grasped it. 
@@ -9,7 +9,7 @@ To Haskell's credit this wasnt due to Haskell being difficult to learn; it was m
 
 # haskellbook
 despite the controversy (see the racsim incident at lambdaconf 2015) , its still a great book and deserves attention, heres mine
-
+# .....and then theres Haskell
 >Jeff Bone <jbone at place.org> on Sat Feb 24 10:09:30 PST 2007
 >Previous message: [FoRK] Bone's Corollaries to Philip Greenspun's 10th Rule of Programming
 >Next message: [FoRK] And then there's Haskell...
